@@ -26,4 +26,4 @@ android {
 	buildFeatures {
 		viewBinding true
 	}
-}ECHO is on.
+}

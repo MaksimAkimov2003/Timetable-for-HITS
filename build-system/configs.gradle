@@ -1,7 +1,7 @@
 
 ext.Configs =
 [
-	APPLICATION_ID		:	"ru.vanyavvorobev.foodies",
+	APPLICATION_ID		:	"ru.vanyavvorobev.app",
 
 	BUILD_TOOL_VERSION	:	"30.0.3",
 
