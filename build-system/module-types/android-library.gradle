@@ -5,7 +5,7 @@ android {
 	compileSdk Configs.COMPILE_SDK
 	buildToolsVersion Configs.BUILD_TOOL_VERSION
 
-	defaultConfigs {
+	defaultConfig {
 		minSdk Configs.MIN_SDK
 		targetSdk Configs.TARGET_SDK
 		testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

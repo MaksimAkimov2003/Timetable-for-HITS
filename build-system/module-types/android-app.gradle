@@ -8,7 +8,7 @@ android {
 	compileSdk Configs.COMPILE_SDK
 	buildToolsVersion Configs.BUILD_TOOL_VERSION
 
-	defaultConfigs {
+	defaultConfig {
 		versionCode Configs.CODE
 		versionName Configs.NAME
 		minSdk Configs.MIN_SDK
