@@ -1,0 +1,52 @@
+
+ext.Versions =
+[
+	APPCOMPAT                 : "1.5.1",
+	CORE                       : "1.9.0",
+	ESPRESSO_CORE              : "3.5.0",
+	TEST_JUNIT                 : "1.1.4",
+	MATERIAL                   : "1.7.0",
+	JUNIT                      : "4.13.2",
+
+	KOTLIN                     : "1.5.10",
+
+	ROOM                       : "2.2.5",
+
+	KOIN                       : "3.1.2",
+
+	RETROFIT                   : "2.9.0",
+	OKHTTP                     : "4.9.0",
+	GSON                       : "2.8.9",
+
+	GRADLE                     : '4.2.1',
+	CONSTRAINT_LAYOUT          : "2.0.4",
+	DECORO                     : "1.5.0",
+
+	RXJAVA2                    : "2.2.20",
+	RXKOTLIN                   : "2.1.0",
+	RXJAVA2_ANDROID            : "2.1.1",
+
+	CORE_TESTING               : "2.1.0",
+
+	CICERONE                   : "7.1",
+	FRAGMENT                   : "1.3.6",
+	GLIDE                      : "4.11.0",
+
+	MOCKITO_CORE               : "4.1.0",
+	MOCKITO_INLINE             : "4.2.0",
+	MOCKITO_KOTLIN             : "4.0.0",
+
+	ARCH_CORE_TESTING          : "2.1.0",
+
+	CAMERA_VIEW                : "1.0.0-alpha16",
+	CAMERA_LIFECYCLE           : "1.0.0",
+	CAMERA2                    : "1.0.0",
+	CAMERA_CORE                : "1.0.0",
+
+	FIREBASE_ML_VISION         : "24.0.3",
+	FIREBASE_CRASHLYTICS_GRADLE: "2.5.1",
+
+	GOOGLE_SERVICES            : "4.3.10",
+
+	COROUTINE                  : "1.6.2",
+]
