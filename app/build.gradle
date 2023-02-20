@@ -3,95 +3,27 @@ plugins {
 	id 'org.jetbrains.kotlin.android'
 }
 
-android {
-	namespace 'com.example.focusestarttesttask'
-	compileSdk 32
+apply plugin: Plugins.ANDROID_APPLICATION
+apply plugin: Plugins.KOTLIN_ANDROID
+apply plugin: Plugins.FIREBASE_CRASHLYTICS
 
-	testOptions {
-		unitTests.returnDefaultValues = true
-	}
-
-	defaultConfig {
-		applicationId "com.example.focusestarttesttask"
-		minSdk 23
-		targetSdk 32
-		versionCode 1
-		versionName "1.0"
-
-		testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-	}
-
-	viewBinding {
-		enabled = true
-	}
-
-	buildTypes {
-		release {
-			minifyEnabled false
-			proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-		}
-	}
-	compileOptions {
-		sourceCompatibility JavaVersion.VERSION_1_8
-		targetCompatibility JavaVersion.VERSION_1_8
-	}
-
-	kotlinOptions {
-		jvmTarget = '1.8'
-	}
-}
-
-java {
-	sourceCompatibility = JavaVersion.VERSION_1_8
-	targetCompatibility = JavaVersion.VERSION_1_8
-}
+apply from: "$rootDir/build-system/module-types/android-app.gradle"
 
 dependencies {
-	def versionLivecycle = "2.5.1"
-	def versionMockito = "4.0.0"
-	def versionCoroutines = "1.6.2"
-	def versionKoin = "3.1.2"
-	def versionMock = "1.9.1"
-
-	implementation 'androidx.core:core-ktx:1.7.0'
-	implementation 'androidx.appcompat:appcompat:1.5.1'
-	implementation 'com.google.android.material:material:1.7.0'
-
-	//viewModel
-	implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$versionLivecycle"
-	implementation "androidx.lifecycle:lifecycle-livedata-ktx:$versionLivecycle"
-	implementation "androidx.lifecycle:lifecycle-runtime-ktx:$versionLivecycle"
-
-	//moshi converter
-	implementation 'com.squareup.moshi:moshi-kotlin:1.13.0'
-
-	//retrofit
-	implementation 'com.squareup.okhttp3:okhttp:4.9.0'
-	implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
-	implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
-
-	//coroutines
-	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versionCoroutines"
-	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versionCoroutines"
-
-	//DI (koin)
-	implementation "io.insert-koin:koin-android:$versionKoin"
-	implementation "io.insert-koin:koin-core:$versionKoin"
-
-	implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-
-	//mocks
-	testImplementation "org.mockito:mockito-core:$versionMockito"
-	testImplementation "org.mockito.kotlin:mockito-kotlin:$versionMockito"
-	testImplementation "org.mockito:mockito-inline:$versionMockito"
-	testImplementation "io.mockk:mockk:$versionMock"
-
-	//unit tests
-	testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$versionCoroutines"
-	testImplementation 'junit:junit:4.13.2'
-	testImplementation "androidx.test:core:1.5.0"
-	implementation "androidx.arch.core:core-testing:2.1.0"
-
-	androidTestImplementation 'androidx.test.ext:junit:1.1.4'
-	androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+	implementation Dependencies.KOTLIN_STANDARD_LIBRARY
+	implementation Dependencies.CORE
+	implementation Dependencies.APPCOMPAT
+	implementation Dependencies.MATERIAL
+	implementation Dependencies.FRAGMENT
+	implementation Dependencies.CONSTRAINT_LAYOUT
+	implementation Dependencies.CICERONE
+	implementation Dependencies.KOIN_CORE
+	implementation Dependencies.KOIN_ANDROID
+	implementation Dependencies.RETROFIT
+	implementation Dependencies.OKHTTP_INTERCEPTOR
+	implementation Dependencies.GSON
+	implementation Dependencies.GSON_CONVERTER
+	implementation Dependencies.VIEW_MODEL
+	implementation Dependencies.LIFE_DATA
+	implementation Dependencies.LIFECYCLE_RUNTIME
 }

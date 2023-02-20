@@ -2,7 +2,6 @@ package com.example.timetable_for_hits
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.focusestarttesttask.R
 
 class MainActivity : AppCompatActivity() {
 
