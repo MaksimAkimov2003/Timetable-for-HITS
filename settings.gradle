@@ -14,5 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Timetable-for-HITS"
 include ':app'
-
+include ':mockapiserver'
 include ':core:resources'
