@@ -26,7 +26,6 @@ dependencies {
 	implementation Dependencies.VIEW_MODEL
 	implementation Dependencies.LIFE_DATA
 	implementation Dependencies.LIFECYCLE_RUNTIME
-
 	implementation Dependencies.COMPOSE_ACTIVITY
 	implementation Dependencies.COMPOSE_MATERIAL
 	implementation Dependencies.COMPOSE_UI
@@ -35,6 +34,7 @@ dependencies {
 	implementation Dependencies.COMPOSE_TOOLING
 	implementation Dependencies.COMPOSE_TEST_MANIFEST
 
+	implementation project(":mockapiserver")
+	implementation project(":network")
 	implementation project(':core:resources')
-	implementation project (":mockapiserver")
 }

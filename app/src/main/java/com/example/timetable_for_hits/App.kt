@@ -1,7 +1,7 @@
 package com.example.timetable_for_hits
 
 import android.app.Application
-import com.example.timetable_for_hits.di.networkModule
+import com.example.network.di.networkModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin

@@ -1,6 +1,5 @@
-package com.example.timetable_for_hits.network
+package com.example.network.providers
 
-import okhttp3.Authenticator
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit

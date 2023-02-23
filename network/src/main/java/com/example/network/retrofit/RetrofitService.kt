@@ -1,4 +1,4 @@
-package com.example.mockapiserver.retrofit
+package com.example.network.retrofit
 
 import retrofit2.Retrofit
 

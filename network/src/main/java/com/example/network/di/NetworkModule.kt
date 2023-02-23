@@ -1,12 +1,12 @@
-package com.example.timetable_for_hits.di
+package com.example.network.di
 
-import com.example.mockapiserver.changer.MOCK
-import com.example.mockapiserver.changer.NetworkChanger
-import com.example.mockapiserver.changer.ORIGINAL
+import com.example.network.changer.MOCK
+import com.example.network.changer.NetworkChanger
+import com.example.network.changer.ORIGINAL
 import com.example.mockapiserver.interceptor.FakeDataInterceptor
-import com.example.timetable_for_hits.network.provideLoggingInterceptor
-import com.example.timetable_for_hits.network.provideOkHttpClient
-import com.example.timetable_for_hits.network.provideRetrofit
+import com.example.network.providers.provideLoggingInterceptor
+import com.example.network.providers.provideOkHttpClient
+import com.example.network.providers.provideRetrofit
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.qualifier.named

@@ -21,4 +21,6 @@ dependencies {
 	implementation Dependencies.COMPOSE_JUNIT
 	implementation Dependencies.COMPOSE_TOOLING
 	implementation Dependencies.COMPOSE_TEST_MANIFEST
+
+	implementation project(":mockapiserver")
 }

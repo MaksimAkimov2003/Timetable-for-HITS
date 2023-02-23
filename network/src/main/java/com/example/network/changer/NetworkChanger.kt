@@ -1,4 +1,4 @@
-package com.example.mockapiserver.changer
+package com.example.network.changer
 
 import android.content.Context
 import androidx.core.content.edit

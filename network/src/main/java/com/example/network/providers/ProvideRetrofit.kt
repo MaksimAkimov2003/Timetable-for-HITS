@@ -1,4 +1,4 @@
-package com.example.timetable_for_hits.network
+package com.example.network.providers
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
