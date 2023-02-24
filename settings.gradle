@@ -17,3 +17,5 @@ include ':app'
 include ':mockapiserver'
 include ':network'
 include ':core:resources'
+
+include ':weekTimetable'
