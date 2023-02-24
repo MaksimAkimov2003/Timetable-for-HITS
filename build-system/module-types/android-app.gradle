@@ -2,9 +2,6 @@
 apply from: "$rootDir/build-system/configs.gradle"
 
 android {
-	packagingOptions {
-		exclude("META-INF/*.kotlin_module")
-	}
 	compileSdk Configs.COMPILE_SDK
 	buildToolsVersion Configs.BUILD_TOOL_VERSION
 
@@ -14,6 +11,9 @@ android {
 		minSdk Configs.MIN_SDK
 		targetSdk Configs.TARGET_SDK
 		testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+		vectorDrawables {
+			useSupportLibrary true
+		}
 	}
 
 	buildTypes {
@@ -29,6 +29,9 @@ android {
 		jvmTarget = Configs.JVM_TARGET
 	}
 	buildFeatures {
-		viewBinding true
+		compose true
+	}
+	composeOptions {
+		kotlinCompilerExtensionVersion '1.2.0'
 	}
 }

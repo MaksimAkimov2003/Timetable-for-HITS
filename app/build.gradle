@@ -1,8 +1,3 @@
-plugins {
-	id 'com.android.application'
-	id 'org.jetbrains.kotlin.android'
-}
-
 apply plugin: Plugins.ANDROID_APPLICATION
 apply plugin: Plugins.KOTLIN_ANDROID
 apply plugin: Plugins.FIREBASE_CRASHLYTICS
@@ -10,12 +5,7 @@ apply plugin: Plugins.FIREBASE_CRASHLYTICS
 apply from: "$rootDir/build-system/module-types/android-app.gradle"
 
 dependencies {
-	implementation Dependencies.KOTLIN_STANDARD_LIBRARY
 	implementation Dependencies.CORE
-	implementation Dependencies.APPCOMPAT
-	implementation Dependencies.MATERIAL
-	implementation Dependencies.FRAGMENT
-	implementation Dependencies.CONSTRAINT_LAYOUT
 	implementation Dependencies.CICERONE
 	implementation Dependencies.KOIN_CORE
 	implementation Dependencies.KOIN_ANDROID
@@ -26,4 +16,13 @@ dependencies {
 	implementation Dependencies.VIEW_MODEL
 	implementation Dependencies.LIFE_DATA
 	implementation Dependencies.LIFECYCLE_RUNTIME
+
+	implementation Dependencies.COMPOSE_ACTIVITY
+	implementation Dependencies.COMPOSE_MATERIAL
+	implementation Dependencies.COMPOSE_UI
+	implementation Dependencies.COMPOSE_PREVIEW
+	implementation Dependencies.COMPOSE_JUNIT
+	implementation Dependencies.COMPOSE_TOOLING
+	implementation Dependencies.COMPOSE_TEST_MANIFEST
+
 }
