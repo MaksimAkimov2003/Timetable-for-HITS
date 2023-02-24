@@ -1,11 +1,11 @@
-package com.example.timetable_for_hits.ui.theme
+package com.example.resources.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes
 import androidx.compose.ui.unit.dp
 
 val Shapes = Shapes (
-	small = RoundedCornerShape(2.dp),
-	medium = RoundedCornerShape(4.dp),
+	small = RoundedCornerShape(8.dp),
+	medium = RoundedCornerShape(8.dp),
 	large = RoundedCornerShape(8.dp)
 )
