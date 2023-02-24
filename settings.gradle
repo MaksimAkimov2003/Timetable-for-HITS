@@ -16,3 +16,5 @@ rootProject.name = "Timetable-for-HITS"
 include ':app'
 
 include ':core:resources'
+
+include ':weekTimetable'
