@@ -24,6 +24,9 @@ android {
 		jvmTarget = Configs.JVM_TARGET
 	}
 	buildFeatures {
-		viewBinding true
+		compose true
+	}
+	composeOptions {
+		kotlinCompilerExtensionVersion '1.2.0'
 	}
 }

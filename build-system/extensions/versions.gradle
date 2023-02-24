@@ -7,7 +7,7 @@ ext.Versions =
 		MATERIAL                   : "1.7.0",
 		JUNIT                      : "4.13.2",
 
-		KOTLIN                     : "1.5.10",
+		KOTLIN                     : '1.6.21',
 
 		ROOM                       : "2.2.5",
 
@@ -19,7 +19,7 @@ ext.Versions =
 		OKHTTP                     : "4.9.0",
 		GSON                       : "2.8.9",
 
-		GRADLE                     : '4.2.1',
+		GRADLE                     : '7.4.0',
 		CONSTRAINT_LAYOUT          : "2.0.4",
 		DECORO                     : "1.5.0",
 
@@ -45,9 +45,13 @@ ext.Versions =
 		CAMERA_CORE                : "1.0.0",
 
 		FIREBASE_ML_VISION         : "24.0.3",
-		FIREBASE_CRASHLYTICS_GRADLE: "2.5.1",
+		FIREBASE_CRASHLYTICS_GRADLE: '2.5.2',
 
 		GOOGLE_SERVICES            : "4.3.10",
 
 		COROUTINE                  : "1.6.2",
+
+		COMPOSE_ACTIVITY		   : "1.3.1",
+		COMPOSE_MATERIAL		   : "1.2.0",
+		COMPOSE_UI				   : "1.3.3"
 	]

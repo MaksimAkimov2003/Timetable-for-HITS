@@ -1,7 +1,7 @@
 
 ext.Configs =
 [
-	APPLICATION_ID		:	"ru.vanyavvorobev.app",
+	APPLICATION_ID		:	"com.example.timetable_for_hits",
 
 	BUILD_TOOL_VERSION	:	"30.0.3",
 
