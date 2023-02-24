@@ -34,8 +34,11 @@ dependencies {
 	implementation Dependencies.COMPOSE_TOOLING
 	implementation Dependencies.COMPOSE_TEST_MANIFEST
 
+<<<<<<< HEAD
 	implementation project(":mockapiserver")
 	implementation project(":network")
 	implementation project(':core:resources')
+=======
+>>>>>>> 3a551ca (added module to project and created viewModel class and added module to App class)
 	implementation project(":weekTimetable")
 }
