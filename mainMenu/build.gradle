@@ -1,0 +1,24 @@
+apply plugin: Plugins.ANDROID_LIBRARY
+apply plugin: Plugins.KOTLIN_ANDROID
+
+apply from: "$rootDir/build-system/module-types/android-library.gradle"
+
+dependencies {
+	implementation Dependencies.CORE
+	implementation Dependencies.CICERONE
+	implementation Dependencies.KOIN_CORE
+	implementation Dependencies.KOIN_ANDROID
+	implementation Dependencies.VIEW_MODEL
+	implementation Dependencies.LIFE_DATA
+	implementation Dependencies.LIFECYCLE_RUNTIME
+
+	implementation Dependencies.COMPOSE_ACTIVITY
+	implementation Dependencies.COMPOSE_MATERIAL
+	implementation Dependencies.COMPOSE_UI
+	implementation Dependencies.COMPOSE_PREVIEW
+	implementation Dependencies.COMPOSE_JUNIT
+	implementation Dependencies.COMPOSE_TOOLING
+	implementation Dependencies.COMPOSE_TEST_MANIFEST
+
+	implementation project(':core:resources')
+}
