@@ -1,31 +1,19 @@
-plugins {
-	id 'com.android.application'
-	id 'org.jetbrains.kotlin.android'
-}
-
-apply plugin: Plugins.ANDROID_APPLICATION
+apply plugin: Plugins.ANDROID_LIBRARY
 apply plugin: Plugins.KOTLIN_ANDROID
-apply plugin: Plugins.FIREBASE_CRASHLYTICS
 
-apply from: "$rootDir/build-system/module-types/android-app.gradle"
+apply from: "$rootDir/build-system/module-types/android-library.gradle"
 
 dependencies {
 	implementation Dependencies.KOTLIN_STANDARD_LIBRARY
 	implementation Dependencies.CORE
 	implementation Dependencies.APPCOMPAT
 	implementation Dependencies.MATERIAL
-	implementation Dependencies.FRAGMENT
-	implementation Dependencies.CONSTRAINT_LAYOUT
-	implementation Dependencies.CICERONE
-	implementation Dependencies.KOIN_CORE
 	implementation Dependencies.KOIN_ANDROID
 	implementation Dependencies.RETROFIT
 	implementation Dependencies.OKHTTP_INTERCEPTOR
 	implementation Dependencies.GSON
 	implementation Dependencies.GSON_CONVERTER
-	implementation Dependencies.VIEW_MODEL
-	implementation Dependencies.LIFE_DATA
-	implementation Dependencies.LIFECYCLE_RUNTIME
+
 	implementation Dependencies.COMPOSE_ACTIVITY
 	implementation Dependencies.COMPOSE_MATERIAL
 	implementation Dependencies.COMPOSE_UI
@@ -35,6 +23,4 @@ dependencies {
 	implementation Dependencies.COMPOSE_TEST_MANIFEST
 
 	implementation project(":mockapiserver")
-	implementation project(":network")
-	implementation project(':core:resources')
 }
