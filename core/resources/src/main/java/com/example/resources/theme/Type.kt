@@ -12,5 +12,12 @@ val Typography = Typography(
 		fontWeight = FontWeight.Normal,
 		fontSize = 16.sp,
 		color = onSecondary
+	),
+	h5 = TextStyle(
+		fontFamily = FontFamily.Default,
+		fontWeight = FontWeight.Normal,
+		fontSize = 24.sp,
+		color = onSecondary
 	)
+
 )

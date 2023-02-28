@@ -1,4 +1,4 @@
-package com.example.mainmenu
+package com.example.mainmenu.di
 
 import com.example.mainmenu.presentation.MainMenuViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel

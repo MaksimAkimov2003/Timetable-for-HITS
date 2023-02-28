@@ -1,8 +1,10 @@
 package com.example.mainmenu.ui
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.IconButton
@@ -15,6 +17,7 @@ import androidx.compose.ui.draw.paint
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.mainmenu.R
 import com.example.resources.theme.TimetableTheme
 import com.example.resources.theme.Typography
 import com.example.resources.theme.background
@@ -26,18 +29,27 @@ fun MainMenuScreen() {
 	val itemsMap = remember {
 		createItemsMap()
 	}
+
+	val footerPainter = painterResource(id = com.example.core.resources.R.drawable.big_cirles)
+
 	TimetableTheme() {
+		CreateToolbar()
+
 		Column(
-			horizontalAlignment = Alignment.CenterHorizontally,
 			modifier = Modifier
-				.padding(
-					start = 16.dp,
-					end = 16.dp,
-				)
+				.fillMaxSize()
+				.padding(top = 56.dp)
+				.background(color = background)
 		) {
 			for (item in itemsMap) {
 				ListItem(text = item.key, imageId = item.value)
 			}
+
+			Image(
+				painter = footerPainter,
+				contentDescription = null,
+				modifier = Modifier.padding(top = 16.dp)
+			)
 		}
 	}
 }
@@ -48,14 +60,16 @@ private fun ListItem(
 	imageId: Int
 ) {
 	val iconPainter = painterResource(id = imageId)
-	val buttonPainter = painterResource(id = com.example.mainmenu.R.drawable.item_button)
+	val buttonPainter = painterResource(id = R.drawable.item_button)
 
 	TimetableTheme() {
 
 		Row(
 			modifier = Modifier
 				.padding(
-					top = 40.dp
+					top = 40.dp,
+					start = 16.dp,
+					end = 16.dp,
 				)
 				.background(
 					shape = RoundedCornerShape(10.dp),
@@ -66,6 +80,7 @@ private fun ListItem(
 					color = mainMenuBorder,
 					shape = RoundedCornerShape(10.dp)
 				)
+				.clickable { navigateAfterClickOnItem() }
 				.wrapContentHeight()
 				.fillMaxWidth(),
 			verticalAlignment = Alignment.CenterVertically
@@ -99,7 +114,7 @@ private fun ListItem(
 					.fillMaxWidth()
 			) {
 				IconButton(
-					onClick = { /*TODO*/ },
+					onClick = { navigateAfterClickOnItem() },
 					modifier = Modifier
 						.paint(buttonPainter)
 						.padding(end = 16.dp)
@@ -111,11 +126,62 @@ private fun ListItem(
 	}
 }
 
+@Preview(widthDp = 500, heightDp = 100)
+@Composable
+private fun CreateToolbar() {
+	val painter = painterResource(id = com.example.core.resources.R.drawable.small_circles)
+	val buttonPainter = painterResource(id = com.example.core.resources.R.drawable.back_button)
+
+	TimetableTheme() {
+		Row(
+			modifier = Modifier
+				.background(color = background)
+				.fillMaxWidth()
+				.wrapContentHeight()
+				.padding(top = 16.dp)
+		) {
+			IconButton(
+				onClick = { /*TODO("Обработать нажатие на кнопку "назад"")*/ },
+				modifier = Modifier
+					.paint(buttonPainter)
+					.padding(start = 16.dp)
+			) {
+			}
+
+			Row(
+				modifier = Modifier
+					.fillMaxWidth()
+					.wrapContentHeight(),
+				horizontalArrangement = Arrangement.Center,
+				verticalAlignment = Alignment.CenterVertically
+			) {
+				Text(
+					text = "Меню",
+					style = Typography.h5,
+					modifier = Modifier.padding(
+						end = 4.dp,
+						top = 8.dp
+					)
+				)
+
+				Image(
+					painter = painter,
+					contentDescription = null,
+				)
+			}
+		}
+	}
+}
+
 private fun createItemsMap(): Map<String, Int> = mapOf(
-	"Группы" to com.example.mainmenu.R.drawable.item_groups,
-	"Преподаватели" to com.example.mainmenu.R.drawable.item_teachers,
-	"Избранное" to com.example.mainmenu.R.drawable.item_heart,
-	"Аудитории" to com.example.mainmenu.R.drawable.item_auditories,
-	"Настройки" to com.example.mainmenu.R.drawable.item_settings,
-	"Удалить данные" to com.example.mainmenu.R.drawable.item_delete_data
+	"Группы" to R.drawable.item_groups,
+	"Преподаватели" to R.drawable.item_teachers,
+	"Избранное" to R.drawable.item_heart,
+	"Аудитории" to R.drawable.item_auditories,
+	"Настройки" to R.drawable.item_settings,
+	"Удалить данные" to R.drawable.item_delete_data
 )
+
+private fun navigateAfterClickOnItem() {
+	Log.e("TEST", "clicked")
+}

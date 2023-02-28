@@ -1,6 +1,7 @@
 package com.example.timetable_for_hits
 
 import android.app.Application
+import com.example.mainmenu.di.mainMenuModule
 import com.example.network.di.networkModule
 import com.example.mainmenu.mainMenuModule
 import org.koin.android.ext.koin.androidContext

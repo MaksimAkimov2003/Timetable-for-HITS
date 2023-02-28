@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+	<string name="groups">Группы</string>
+	<string name="teachers">Преподаватели</string>
+	<string name="favourites">Избранное</string>
+	<string name="auditories">Аудитории</string>
+	<string name="settings">Настройки</string>
+	<string name="delete_data">Удалить данные</string>
 </resources>
