@@ -8,6 +8,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -19,8 +20,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.mainmenu.R
 import com.example.resources.theme.TimetableTheme
-import com.example.resources.theme.Typography
-import com.example.resources.theme.background
 import com.example.resources.theme.mainMenuBorder
 
 @Preview(widthDp = 500, heightDp = 1000)
@@ -39,7 +38,7 @@ fun MainMenuScreen() {
 			modifier = Modifier
 				.fillMaxSize()
 				.padding(top = 56.dp)
-				.background(color = background)
+				.background(color = MaterialTheme.colors.background)
 		) {
 			for (item in itemsMap) {
 				ListItem(text = item.key, imageId = item.value)
@@ -73,7 +72,7 @@ private fun ListItem(
 				)
 				.background(
 					shape = RoundedCornerShape(10.dp),
-					color = background
+					color = MaterialTheme.colors.background
 				)
 				.border(
 					width = 3.dp,
@@ -99,7 +98,7 @@ private fun ListItem(
 
 			Text(
 				text = text,
-				style = Typography.body1,
+				style = MaterialTheme.typography.body1,
 				modifier = Modifier.padding(
 					start = 16.dp,
 					top = 16.dp,
@@ -124,6 +123,7 @@ private fun ListItem(
 
 		}
 	}
+
 }
 
 @Preview(widthDp = 500, heightDp = 100)
@@ -135,7 +135,7 @@ private fun CreateToolbar() {
 	TimetableTheme() {
 		Row(
 			modifier = Modifier
-				.background(color = background)
+				.background(color = MaterialTheme.colors.background)
 				.fillMaxWidth()
 				.wrapContentHeight()
 				.padding(top = 16.dp)
@@ -157,7 +157,7 @@ private fun CreateToolbar() {
 			) {
 				Text(
 					text = "Меню",
-					style = Typography.h5,
+					style = MaterialTheme.typography.h5,
 					modifier = Modifier.padding(
 						end = 4.dp,
 						top = 8.dp
