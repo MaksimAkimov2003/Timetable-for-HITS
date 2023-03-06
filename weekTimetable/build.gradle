@@ -25,4 +25,6 @@ dependencies {
 	implementation Dependencies.COMPOSE_TEST_MANIFEST
 
 	implementation project(":core:resources")
+	implementation project(":mockapiserver")
+	implementation project(":network")
 }
