@@ -35,9 +35,9 @@ class ScrollTableState {
 	private var verticalScrollOffset = 0f
 	private var horizontalScrollOffset = 0f
 	val verticalScrollState = ScrollableState {
-		if(measurements.contentHeight - measurements.viewSizeY > 0f) {
+		if(measurements.contentHeight - measurements.viewSizeY - measurements.strokeWidth > 0f) {
 			val delta =
-				if (it < 0f) 	max(verticalScrollOffset - (measurements.contentHeight - measurements.viewSizeY), it)
+				if (it < 0f) 	max(verticalScrollOffset - (measurements.contentHeight - measurements.viewSizeY - measurements.strokeWidth), it)
 				else 			min(verticalScrollOffset, it)
 			verticalScrollOffset = (verticalScrollOffset - delta)
 				.coerceAtLeast(0f)
@@ -49,9 +49,9 @@ class ScrollTableState {
 		it
 	}
 	val horizontalScrollState = ScrollableState {
-		if(measurements.contentWidth - measurements.viewSizeX > 0f) {
+		if(measurements.contentWidth - measurements.viewSizeX - measurements.strokeWidth > 0f) {
 			val delta =
-				if (it < 0f) 	max(horizontalScrollOffset - (measurements.contentWidth - measurements.viewSizeX), it)
+				if (it < 0f) 	max(horizontalScrollOffset - (measurements.contentWidth - measurements.viewSizeX - measurements.strokeWidth), it)
 				else 			min(horizontalScrollOffset, it)
 			horizontalScrollOffset = (horizontalScrollOffset - delta)
 				.coerceAtLeast(0f)

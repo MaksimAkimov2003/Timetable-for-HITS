@@ -1,4 +1,4 @@
 package com.example.weektimetable.presentation
 
-class WeekTimetableRouter {
+interface IWeekTimetableRouter {
 }

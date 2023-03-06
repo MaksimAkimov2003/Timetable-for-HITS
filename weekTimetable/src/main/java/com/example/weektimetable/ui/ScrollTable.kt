@@ -97,6 +97,12 @@ private fun DrawTable(
 		state.measurements.apply {
 			for(i in 1 .. adapter.columnCount()) {
 				for(j in 1 .. adapter.rowCount()) {
+					translate(column[i-1], 0f) {
+						drawLine(Color.Black, Offset(-strokeWidth / 2, 0f), Offset(-strokeWidth / 2, row.last() ), strokeWidth = strokeWidth)
+					}
+					translate(0f, row[j-1]) {
+						drawLine(Color.Black, Offset(0f, -strokeWidth / 2), Offset(column.last(), -strokeWidth / 2), strokeWidth = strokeWidth)
+					}
 					translate(column[i-1] + offsetX, row[j-1] + offsetY) {
 						table[i-1][j-1].content.forEach{ it() }
 					}
@@ -104,15 +110,13 @@ private fun DrawTable(
 			}
 			for(i in 1 .. adapter.columnCount()) {
 				translate(column[i-1], 0f) {
-					drawContext.canvas.nativeCanvas.drawRect(0f, 0f, column[i] - column[i - 1], columnMarkLine, backgroundPaint)
-					drawLine(Color.Black, Offset(-strokeWidth / 2, 0f), Offset(-strokeWidth / 2, row.last() ), strokeWidth = strokeWidth)
+					drawContext.canvas.nativeCanvas.drawRect(0f, 0f, column[i] - column[i - 1] - strokeWidth, columnMarkLine, backgroundPaint)
 					translate(offsetX, offsetY) { columnMarks[i - 1].content.forEach { it() }}
 				}
 			}
 			for(j in 1 .. adapter.rowCount()) {
 				translate(0f, row[j-1]) {
-					drawContext.canvas.nativeCanvas.drawRect(0f, 0f, rowMarkLine, row[j] - row[j - 1], backgroundPaint)
-					drawLine(Color.Black, Offset(0f, -strokeWidth / 2), Offset(column.last(), -strokeWidth / 2), strokeWidth = strokeWidth)
+					drawContext.canvas.nativeCanvas.drawRect(0f, 0f, rowMarkLine, row[j] - row[j - 1] - strokeWidth, backgroundPaint)
 					translate(offsetX, offsetY) { rowMarks[j - 1].content.forEach { it() } }
 				}
 			}
