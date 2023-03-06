@@ -38,7 +38,10 @@ dependencies {
 	implementation project(":mockapiserver")
 	implementation project(":network")
 	implementation project(':core:resources')
+<<<<<<< HEAD
 =======
 >>>>>>> 3a551ca (added module to project and created viewModel class and added module to App class)
+=======
+>>>>>>> f00487db02b2f92119bd5a2f8491c2aeeb7b69c9
 	implementation project(":weekTimetable")
 }
