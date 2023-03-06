@@ -9,6 +9,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.unit.dp
 import java.lang.Float.max
 import java.lang.Float.min
+import java.lang.Math.abs
 
 class ScrollTableState {
 
@@ -34,25 +35,31 @@ class ScrollTableState {
 	private var verticalScrollOffset = 0f
 	private var horizontalScrollOffset = 0f
 	val verticalScrollState = ScrollableState {
-		val delta = if(it > 0f) min(measurements.contentHeight - measurements.viewSizeY - verticalScrollOffset, it)
-		else min(verticalScrollOffset, it)
-		verticalScrollOffset += delta
-		val mes = measurements.row.toMutableList()
-		for(i in mes.indices) {
-			mes[i] -= delta
+		if(measurements.contentHeight - measurements.viewSizeY > 0f) {
+			val delta =
+				if (it < 0f) 	max(verticalScrollOffset - (measurements.contentHeight - measurements.viewSizeY), it)
+				else 			min(verticalScrollOffset, it)
+			verticalScrollOffset = (verticalScrollOffset - delta)
+				.coerceAtLeast(0f)
+				.coerceAtMost(measurements.contentHeight - measurements.offsetY)
+			val mes = measurements.row.toMutableList()
+			for (i in mes.indices) { mes[i] += delta }
+			measurements = measurements.copy(row = mes)
 		}
-		measurements = measurements.copy(row = mes)
 		it
 	}
 	val horizontalScrollState = ScrollableState {
-		val delta = if(it > 0f) min(measurements.contentWidth - measurements.viewSizeX - horizontalScrollOffset, it)
-		else min(-horizontalScrollOffset, it)
-		horizontalScrollOffset += delta
-		val mes = measurements.column.toMutableList()
-		for(i in mes.indices) {
-			mes[i] -= delta
+		if(measurements.contentWidth - measurements.viewSizeX > 0f) {
+			val delta =
+				if (it < 0f) 	max(horizontalScrollOffset - (measurements.contentWidth - measurements.viewSizeX), it)
+				else 			min(horizontalScrollOffset, it)
+			horizontalScrollOffset = (horizontalScrollOffset - delta)
+				.coerceAtLeast(0f)
+				.coerceAtMost(measurements.contentWidth - measurements.viewSizeX)
+			val mes = measurements.column.toMutableList()
+			for (i in mes.indices) { mes[i] += delta }
+			measurements = measurements.copy(column = mes)
 		}
-
 		it
 	}
 
