@@ -45,7 +45,7 @@ class TimetableAdapter(private val items: List<MyDay>): ScrollTableAdapter() {
 	override fun drawItem(x: Int, y: Int): CanvasBlock.() -> Unit = {
 		textPaint.getTextBounds(items[x].schedule[y].name, 0, items[x].schedule[y].name.length, bounds)
 		textPaint.getTextBounds("1", 0, "1".length, offset)
-		drawRect(0f, 0f, 512.dp.value + 32.dp.value, 128.dp.value, rectPaint)
+		drawRect(0f, 0f, 512.dp.value + 32.dp.value, 512.dp.value, rectPaint)
 		drawText(items[x].schedule[y].name, 0f, 0f, textPaint)
 	}
 

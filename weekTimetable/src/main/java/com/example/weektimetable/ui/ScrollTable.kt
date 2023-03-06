@@ -95,7 +95,6 @@ private fun DrawTable(
 		.onGloballyPositioned { state.setViewSize(it.size.width.toFloat(), it.size.height.toFloat()) }) {
 
 		state.measurements.apply {
-			println("hello")
 			for(i in 1 .. adapter.columnCount()) {
 				for(j in 1 .. adapter.rowCount()) {
 					translate(column[i-1] + offsetX, row[j-1] + offsetY) {
