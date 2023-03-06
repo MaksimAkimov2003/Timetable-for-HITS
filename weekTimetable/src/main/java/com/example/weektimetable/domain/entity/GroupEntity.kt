@@ -1,5 +1,5 @@
 package com.example.weektimetable.domain.entity
 
-data class WeekTimetableEntity (
+data class GroupEntity(
     val id: Int
 )

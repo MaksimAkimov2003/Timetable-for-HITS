@@ -1,0 +1,85 @@
+{
+  "Days": [
+    {
+      "WeekDay": "Понедельник",
+      "countClasses": 3,
+      "timeSlotDTOs": [
+        {
+          "SlotNumber": 0,
+          "Pairs": [
+            {
+              "LessonType": "Практика",
+              "Proffessor": "Иванов Иван Иванович",
+              "Auditory": 132,
+              "Groups": [
+                {
+                  "id": 111
+                },
+                {
+                  "id": 222
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "SlotNumber": 1,
+          "Pairs": [
+            {
+              "LessonType": "Лекция",
+              "Proffessor": "Зубенко Михаил Петрович",
+              "Auditory": 666,
+              "Groups": [
+                {
+                  "id": 666
+                },
+                {
+                  "id": 111
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "SlotNumber": 2,
+          "Pairs": [
+            {
+              "LessonType": "Контрольная точка",
+              "Proffessor": "Антон Павлович Чехов",
+              "Auditory": 1919,
+              "Groups": [
+                {
+                  "id": 111
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "WeekDay": "Вторник",
+      "countClasses": 3,
+      "timeSlotDTOs": [
+        {
+          "SlotNumber": "0",
+          "Pairs": [
+            {
+              "LessonType": "Практика",
+              "Proffessor": "Иванов Иван Иванович",
+              "Auditory": 321,
+              "Groups": [
+                {
+                  "id": 111
+                },
+                {
+                  "id": 222
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

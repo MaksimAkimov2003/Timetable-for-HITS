@@ -1,6 +1,5 @@
-apply plugin: Plugins.ANDROID_APPLICATION
+apply plugin: Plugins.ANDROID_LIBRARY
 apply plugin: Plugins.KOTLIN_ANDROID
-apply plugin: Plugins.FIREBASE_CRASHLYTICS
 
 apply from: "$rootDir/build-system/module-types/android-library.gradle"
 
@@ -25,4 +24,6 @@ dependencies {
 	implementation Dependencies.COMPOSE_TOOLING
 	implementation Dependencies.COMPOSE_TEST_MANIFEST
 
+	implementation project(":mockapiserver")
+	implementation project(":network")
 }
