@@ -29,12 +29,31 @@ fun PairDto.toEntity(): PairEntity {
         lessonType = this.lessonType,
         professor = this.professor,
         auditory = this.auditory,
-        groups = this.groups.map{ it.toEntity() }
+        groups = this.groups.map{ it.toEntity() },
+        discipline = this.discipline
     )
 }
 
 fun GroupDto.toEntity(): GroupEntity {
     return GroupEntity(
-        id = this.id
+        number = this.number,
+        direction = this.direction.toEntity()
+    )
+}
+
+fun DirectionDto.toEntity(): DirectionEntity {
+    return DirectionEntity(
+        id = this.id,
+        name = this.name,
+        number = this.number,
+        faculty = this.faculty.toEntity()
+    )
+}
+
+fun FacultyDto.toEntity(): FacultyEntity {
+    return FacultyEntity(
+        id = this.id,
+        number = this.number,
+        name = this.name
     )
 }
