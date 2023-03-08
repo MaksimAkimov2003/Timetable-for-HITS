@@ -15,4 +15,5 @@ val onBackground		= Color(0xFF000000)
 val onSurface			= Color(0xFF000000)
 val onError				= Color(0xFFFFFFFF)
 
+val choosingScreens = Color(0xFFBFC6FC)
 val mainMenuBorder				= Color(0xffadb3e0)

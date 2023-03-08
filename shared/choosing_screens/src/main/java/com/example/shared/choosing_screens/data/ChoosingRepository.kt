@@ -1,4 +1,4 @@
-package com.example.shared.choosing_screens
+package com.example.shared.choosing_screens.data
 
 interface ChoosingRepository {
 
