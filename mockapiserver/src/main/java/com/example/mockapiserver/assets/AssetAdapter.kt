@@ -34,6 +34,41 @@ internal fun getFake(
 			)
 		}
 
+		"/api/disciplines/1"       -> {
+			response.createResponse(
+				description = context.readFileFromAssets(DirectionsAssetReader.faculty1),
+				body = context.readFileFromAssets(DirectionsAssetReader.faculty1)
+			)
+		}
+
+		"/api/disciplines/2"       -> {
+			response.createResponse(
+				description = context.readFileFromAssets(DirectionsAssetReader.faculty2),
+				body = context.readFileFromAssets(DirectionsAssetReader.faculty2)
+			)
+		}
+
+		"/api/disciplines/3"       -> {
+			response.createResponse(
+				description = context.readFileFromAssets(DirectionsAssetReader.faculty3),
+				body = context.readFileFromAssets(DirectionsAssetReader.faculty3)
+			)
+		}
+
+		"/api/disciplines/4"       -> {
+			response.createResponse(
+				description = context.readFileFromAssets(DirectionsAssetReader.faculty4),
+				body = context.readFileFromAssets(DirectionsAssetReader.faculty4)
+			)
+		}
+
+		"/api/disciplines/5"       -> {
+			response.createResponse(
+				description = context.readFileFromAssets(DirectionsAssetReader.faculty5),
+				body = context.readFileFromAssets(DirectionsAssetReader.faculty5)
+			)
+		}
+
 		else                       -> {
 			error404(response)
 		}
