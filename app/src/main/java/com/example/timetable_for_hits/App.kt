@@ -4,6 +4,7 @@ import android.app.Application
 import com.example.directions_screen.di.directionsScreenModule
 import com.example.faculties_screen.di.facultiesScreenModule
 import com.example.feature.teachers_screen.di.teachersScreenModule
+import com.example.groups_screen.di.groupsScreenModule
 import com.example.mainmenu.di.mainMenuModule
 import com.example.network.di.networkModule
 import org.koin.android.ext.koin.androidContext
@@ -24,7 +25,8 @@ class App : Application() {
 				teachersScreenModule,
 				facultiesScreenModule,
 				directionsScreenModule,
-				mainMenuModule
+				groupsScreenModule,
+				mainMenuModule,
 			)
 		}
 	}
