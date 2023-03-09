@@ -13,14 +13,21 @@ internal fun getFake(
 	response: Response.Builder
 ): Response.Builder =
 	when (uri.path) {
-		"insert/your/request/here"               -> {
+		"insert/your/request/here" -> {
 			response.createResponse(
 				description = context.readFileFromAssets(TestAssetReader.testAsset),
 				body = context.readFileFromAssets(TestAssetReader.testAsset)
 			)
 		}
 
-		else        -> {
+		"/api/teachers"            -> {
+			response.createResponse(
+				description = context.readFileFromAssets(TeachersAssetReader.teachers),
+				body = context.readFileFromAssets(TeachersAssetReader.teachers)
+			)
+		}
+
+		else                       -> {
 			error404(response)
 		}
 	}

@@ -2,6 +2,7 @@ package com.example.shared.choosing_screens.ui
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -101,7 +102,10 @@ fun ChoosingScreenContent(
 
 			)
 
-			ItemsList(itemsList = displayedList)
+			ItemsList(
+				itemsList = displayedList,
+				onItemClick = onItemClick
+			)
 
 			if (!isFirstInput) {
 				LaunchedEffect(key1 = textFieldValue, block = {
@@ -118,7 +122,10 @@ fun ChoosingScreenContent(
 }
 
 @Composable
-private fun ItemsList(itemsList: List<String>) {
+private fun ItemsList(
+	itemsList: List<String>,
+	onItemClick: () -> Unit
+) {
 	TimetableTheme() {
 		LazyColumn(contentPadding = PaddingValues(start = 24.dp)) {
 			var padding = 0.dp
@@ -129,10 +136,14 @@ private fun ItemsList(itemsList: List<String>) {
 				Text(
 					text = item,
 					style = MaterialTheme.typography.body2,
-					modifier = Modifier.padding(
-						top = padding,
-						bottom = 16.dp
-					)
+					modifier = Modifier
+						.padding(
+							top = padding,
+							bottom = 16.dp
+						)
+						.clickable {
+							onItemClick.invoke()
+						}
 				)
 				Divider(color = choosingScreens)
 			}

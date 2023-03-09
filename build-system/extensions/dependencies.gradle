@@ -64,12 +64,14 @@ ext.Dependencies =
 		COROUTINE_ANDROID          : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.COROUTINE}",
 		COROUTINE_TEST             : "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.COROUTINE}",
 
-		COMPOSE_ACTIVITY		   : "androidx.activity:activity-compose:$Versions.COMPOSE_ACTIVITY",
-		COMPOSE_MATERIAL		   : "androidx.compose.material:material:$Versions.COMPOSE_MATERIAL",
+		COMPOSE_ACTIVITY           : "androidx.activity:activity-compose:$Versions.COMPOSE_ACTIVITY",
+		COMPOSE_MATERIAL           : "androidx.compose.material:material:$Versions.COMPOSE_MATERIAL",
 
-		COMPOSE_UI				   : "androidx.compose.ui:ui:$Versions.COMPOSE_UI",
-		COMPOSE_PREVIEW			   : "androidx.compose.ui:ui-tooling-preview:$Versions.COMPOSE_UI",
-		COMPOSE_JUNIT			   : "androidx.compose.ui:ui-test-junit4:$Versions.COMPOSE_UI",
-		COMPOSE_TOOLING			   : "androidx.compose.ui:ui-tooling:$Versions.COMPOSE_UI",
-		COMPOSE_TEST_MANIFEST	   : "androidx.compose.ui:ui-test-manifest:$Versions.COMPOSE_UI"
+		COMPOSE_UI                 : "androidx.compose.ui:ui:$Versions.COMPOSE_UI",
+		COMPOSE_PREVIEW            : "androidx.compose.ui:ui-tooling-preview:$Versions.COMPOSE_UI",
+		COMPOSE_JUNIT              : "androidx.compose.ui:ui-test-junit4:$Versions.COMPOSE_UI",
+		COMPOSE_TOOLING            : "androidx.compose.ui:ui-tooling:$Versions.COMPOSE_UI",
+		COMPOSE_TEST_MANIFEST      : "androidx.compose.ui:ui-test-manifest:$Versions.COMPOSE_UI",
+		COMPOSE_KOIN               : "io.insert-koin:koin-androidx-compose:${Versions.COMPOSE_KOIN}",
+		COMPOSE_LIVEDATA           : "androidx.compose.runtime:runtime-livedata:${Versions.COMPOSE_LIVEDATA}"
 	]

@@ -19,5 +19,7 @@ include ':network'
 include ':core:resources'
 include ':shared'
 include ':shared:choosing_screens'
+include ':feature'
+include ':feature:teachers_screen'
 
 include ':mainMenu'
