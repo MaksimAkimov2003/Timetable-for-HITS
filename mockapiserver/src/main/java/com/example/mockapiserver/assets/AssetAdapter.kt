@@ -27,6 +27,13 @@ internal fun getFake(
 			)
 		}
 
+		"/api/faculties"           -> {
+			response.createResponse(
+				description = context.readFileFromAssets(FacultiesAssetReader.faculties),
+				body = context.readFileFromAssets(FacultiesAssetReader.faculties)
+			)
+		}
+
 		else                       -> {
 			error404(response)
 		}

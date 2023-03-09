@@ -39,5 +39,6 @@ dependencies {
 	implementation project(':core:resources')
 	implementation project(":shared:choosing_screens")
 	implementation project(":feature:teachers_screen")
+	implementation project(":feature:faculties_screen")
 	implementation project(':mainMenu')
 }

@@ -21,5 +21,6 @@ include ':shared'
 include ':shared:choosing_screens'
 include ':feature'
 include ':feature:teachers_screen'
+include ':feature:faculties_screen'
 
 include ':mainMenu'
