@@ -24,6 +24,7 @@ import com.example.weektimetable.ui.scrolltable.ScrollTable
 import com.example.weektimetable.ui.scrolltable.TimetableAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import android.text.format.DateFormat
+import androidx.compose.foundation.Image
 import com.example.userstorage.domain.entity.TimetableType
 
 class WeekTimetableActivity: ComponentActivity() {
@@ -36,8 +37,12 @@ class WeekTimetableActivity: ComponentActivity() {
 		setContent {
 			TimetableTheme {
 				Box(modifier = Modifier
-					.background(MaterialTheme.colors.secondary)
+					.background(MaterialTheme.colors.secondaryVariant)
 					.fillMaxSize()) {
+					Image(modifier = Modifier
+						.fillMaxSize(),
+						painter = painterResource(id = com.example.core.resources.R.drawable.week_timetable_background),
+						contentDescription = "")
 					Box(modifier = Modifier.padding(16.dp, 16.dp, 16.dp, 32.dp)) {
 						DrawContent()
 					}
@@ -69,7 +74,7 @@ class WeekTimetableActivity: ComponentActivity() {
 				contentAlignment = Alignment.Center) {
 				DrawLoadingSpinner()
 			}
-			DrawBottomBar()
+//			DrawBottomBar()
 		}
 	}
 
@@ -91,7 +96,7 @@ class WeekTimetableActivity: ComponentActivity() {
 					}
 				}
 			}
-			DrawBottomBar()
+//			DrawBottomBar()
 		}
 	}
 
@@ -109,7 +114,7 @@ class WeekTimetableActivity: ComponentActivity() {
 				contentAlignment = Alignment.Center) {
 				ScrollTable(TimetableAdapter(state.timetable.days))
 			}
-			DrawBottomBar()
+//			DrawBottomBar()
 		}
 	}
 
@@ -151,7 +156,8 @@ class WeekTimetableActivity: ComponentActivity() {
 				Text(
 					text = title,
 					style = MaterialTheme.typography.body1,
-					modifier = Modifier.align(Alignment.CenterHorizontally)
+					modifier = Modifier.align(Alignment.CenterHorizontally),
+					textAlign = TextAlign.Center
 				)
 				Text(
 					text = date,
