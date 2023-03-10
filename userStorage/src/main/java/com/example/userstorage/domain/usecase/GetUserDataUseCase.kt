@@ -1,9 +1,12 @@
 package com.example.userstorage.domain.usecase
 
-class GetUserChoiceUseCase {
+import com.example.userstorage.domain.entity.UserData
+import com.example.userstorage.domain.repository.IUserStorageRepository
 
-    operator fun invoke() {
+class GetUserDataUseCase(private val repository: IUserStorageRepository) {
 
+    operator fun invoke(): UserData {
+        return repository.getUserData()
     }
 
 }
