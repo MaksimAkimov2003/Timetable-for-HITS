@@ -18,13 +18,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.resources.theme.TimetableTheme
 import com.example.weektimetable.domain.entity.WeekDateEntity
-import com.example.weektimetable.presentation.TimetableType
 import com.example.weektimetable.presentation.WeekTimetableState
 import com.example.weektimetable.presentation.WeekTimetableViewModel
 import com.example.weektimetable.ui.scrolltable.ScrollTable
 import com.example.weektimetable.ui.scrolltable.TimetableAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import android.text.format.DateFormat
+import com.example.userstorage.domain.entity.TimetableType
 
 class WeekTimetableActivity: ComponentActivity() {
 
@@ -60,7 +60,7 @@ class WeekTimetableActivity: ComponentActivity() {
 	private fun RenderLoadingState(state: WeekTimetableState.Loading) {
 		Column {
 			DrawHeader(
-				getTitle(state.timetableType.value, state.timetableType),
+				getTitle(state.timetableType),
 				state.currentDate,
 				formatCurrentWeek(state.currentWeek))
 			Box(modifier = Modifier
@@ -77,7 +77,7 @@ class WeekTimetableActivity: ComponentActivity() {
 	private fun RenderErrorState(state: WeekTimetableState.Error) {
 		Column {
 			DrawHeader(
-				getTitle(state.timetableType.value, state.timetableType),
+				getTitle(state.timetableType),
 				state.currentDate,
 				formatCurrentWeek(state.currentWeek))
 			Box(modifier = Modifier
@@ -99,7 +99,7 @@ class WeekTimetableActivity: ComponentActivity() {
 	private fun RenderContentState(state: WeekTimetableState.Content) {
 		Column {
 			DrawHeader(
-				title = getTitle(state.timetableType.value, state.timetableType),
+				title = getTitle(state.timetableType),
 				date = state.currentDate,
 				currentWeek = formatCurrentWeek(state.currentWeek))
 			Box(modifier = Modifier
@@ -131,10 +131,10 @@ class WeekTimetableActivity: ComponentActivity() {
 		)
 	}
 
-	private fun getTitle(value: String, type: TimetableType) = when(type) {
-			TimetableType.Group		-> { "Группа $value" }
-			TimetableType.Teacher	-> { value }
-			TimetableType.Auditory	-> { "Аудитория $value" }
+	private fun getTitle(timetableType: TimetableType) = when(timetableType) {
+			TimetableType.Group		-> { "${timetableType.prefix} ${timetableType.value}" }
+			TimetableType.Teacher	-> { "${timetableType.prefix} ${timetableType.value}" }
+			TimetableType.Auditory	-> { "${timetableType.prefix} ${timetableType.value}" }
 		}
 
 	private fun formatCurrentWeek(week: WeekDateEntity) =

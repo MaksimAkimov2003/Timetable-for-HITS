@@ -1,5 +1,6 @@
 package com.example.weektimetable.presentation
 
+import com.example.userstorage.domain.entity.TimetableType
 import com.example.weektimetable.domain.entity.WeekDateEntity
 import com.example.weektimetable.domain.entity.WeekEntity
 

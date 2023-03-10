@@ -4,6 +4,10 @@ import android.text.format.DateFormat
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.userstorage.domain.entity.TimetableType
+import com.example.userstorage.domain.entity.UserData
+import com.example.userstorage.domain.usecase.GetUserDataUseCase
+import com.example.userstorage.domain.usecase.SaveUserDataUseCase
 import com.example.weektimetable.domain.entity.WeekDateEntity
 import com.example.weektimetable.domain.usecase.GetWeekTimetableByAuditoryUseCase
 import com.example.weektimetable.domain.usecase.GetWeekTimetableByGroupUseCase
@@ -18,7 +22,7 @@ import java.lang.Math.ceil
 import java.util.*
 
 class WeekTimetableViewModel(
-//	private val weekTimetableRouter: IWeekTimetableRouter,
+	private val getUserDataUseCase: GetUserDataUseCase,
 	private val getWeekTimetableByGroupUseCase: GetWeekTimetableByGroupUseCase,
 	private val getWeekTimetableByAuditoryUseCase: GetWeekTimetableByAuditoryUseCase,
 	private val getWeekTimetableByTeacherUseCase: GetWeekTimetableByTeacherUseCase
@@ -75,9 +79,7 @@ class WeekTimetableViewModel(
 	}
 
 	private fun getTimetableType(): TimetableType {
-		val type = TimetableType.Group /*todo*/
-		type.value = "1"
-		return type
+		return getUserDataUseCase().data
 	}
 
 	private fun getCurrentDateByWeek(week: WeekDateEntity): String {
