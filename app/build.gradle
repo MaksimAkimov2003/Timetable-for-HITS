@@ -42,5 +42,6 @@ dependencies {
 	implementation project(":feature:faculties_screen")
 	implementation project(":feature:directions_screen")
 	implementation project(":feature:groups_screen")
+	implementation project(":feature:start_screen")
 	implementation project(':mainMenu')
 }
