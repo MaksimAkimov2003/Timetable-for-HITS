@@ -12,6 +12,7 @@ fun WeekDto.toEntity(): WeekEntity {
 fun DayDto.toEntity(): DayEntity {
     return DayEntity(
         weekDay = this.weekDay,
+        day = this.day,
         countClasses = this.countClasses,
         timeSlots = this.timeSlots.map{ it.toEntity() }
     )

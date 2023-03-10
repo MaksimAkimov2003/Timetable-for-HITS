@@ -1,4 +1,4 @@
-package com.example.weektimetable.ui
+package com.example.weektimetable.ui.scrolltable
 
 import androidx.compose.foundation.gestures.ScrollableState
 import androidx.compose.runtime.getValue
@@ -9,7 +9,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.unit.dp
 import java.lang.Float.max
 import java.lang.Float.min
-import java.lang.Math.abs
 
 class ScrollTableState {
 
@@ -28,7 +27,7 @@ class ScrollTableState {
 		var offsetY: Float = 16.dp.value,
 		var viewSizeX: Float = 0.dp.value,
 		var viewSizeY: Float = 0.dp.value,
-		var strokeWidth: Float = 20.dp.value
+		var strokeWidth: Float = 4.dp.value
 	)
 	var measurements by mutableStateOf(Measurements())
 
@@ -134,11 +133,11 @@ class ScrollTableState {
 	companion object {
 
 		fun getState(
-			rowMarks: List<CanvasBlock>,
-			columnMarks: List<CanvasBlock>,
-			table: List<List<CanvasBlock>>,
-			verticalScrollOffset: Float = 0f,
-			horizontalScrollOffset: Float = 0f
+            rowMarks: List<CanvasBlock>,
+            columnMarks: List<CanvasBlock>,
+            table: List<List<CanvasBlock>>,
+            verticalScrollOffset: Float = 0f,
+            horizontalScrollOffset: Float = 0f
 		) = ScrollTableState().apply {
 			this.rowMarks = rowMarks
 			this.columnMarks = columnMarks

@@ -1,7 +1,7 @@
 package com.example.weektimetable.presentation
 
-sealed class TimetableType {
-    object Group: TimetableType()
-    object Teacher: TimetableType()
-    object Auditory: TimetableType()
+enum class TimetableType(val prefix: String, var value: String = "") {
+    Group("Группа"),
+    Teacher(""),
+    Auditory("Аудитория"),
 }

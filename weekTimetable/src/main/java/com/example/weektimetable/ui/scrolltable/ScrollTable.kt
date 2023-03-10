@@ -1,19 +1,13 @@
-package com.example.weektimetable.ui
+package com.example.weektimetable.ui.scrolltable
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.ScrollableState
 import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.Saver
-import androidx.compose.runtime.saveable.listSaver
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
@@ -21,10 +15,6 @@ import androidx.compose.ui.graphics.Paint
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.unit.dp
-import androidx.core.view.ContentInfoCompat.Flags
-import java.lang.Float.max
-import java.lang.Float.min
 
 abstract class ScrollTableAdapter {
 
@@ -38,18 +28,18 @@ abstract class ScrollTableAdapter {
 }
 
 @Composable
-fun ScrollTable(adapter: TimetableAdapter) {
+fun ScrollTable(adapter: ScrollTableAdapter) {
 
 	val rowMarks = mutableListOf<CanvasBlock>()
 	val columnMarks = mutableListOf<CanvasBlock>()
 	val table = mutableListOf(mutableListOf<CanvasBlock>())
 
 	for(i in 0 .. adapter.columnCount()) {
-		if(i != 0) table.add(mutableListOf())
+		if(i > 1) table.add(mutableListOf())
 		for(j in 0 .. adapter.rowCount()) {
 			val block = CanvasBlock()
 			val drawBlock: CanvasBlock.() -> Unit
-			try {
+//			try {
 				when {
 					i == 0 && j == 0 	-> {  }
 					i == 0 				-> {
@@ -68,7 +58,9 @@ fun ScrollTable(adapter: TimetableAdapter) {
 						table[i-1].add(block)
 					}
 				}
-			} catch(_: Exception) { }
+//			} catch(_: Exception) {
+//				println("error")
+//			}
 		}
 	}
 
@@ -77,12 +69,18 @@ fun ScrollTable(adapter: TimetableAdapter) {
 
 @Composable
 private fun DrawTable(
-	adapter: TimetableAdapter,
-	rowMarks: List<CanvasBlock>,
-	columnMarks: List<CanvasBlock>,
-	table: List<List<CanvasBlock>>) {
+    adapter: ScrollTableAdapter,
+    rowMarks: List<CanvasBlock>,
+    columnMarks: List<CanvasBlock>,
+    table: List<List<CanvasBlock>>) {
 
-	val state = rememberSaveable(saver = ScrollTableState.Saver ) { ScrollTableState.getState(rowMarks, columnMarks, table) }
+	val state = rememberSaveable(saver = ScrollTableState.Saver) {
+        ScrollTableState.getState(
+            rowMarks,
+            columnMarks,
+            table
+        )
+    }
 	val backgroundPaint = Paint().asFrameworkPaint().apply {
 		isAntiAlias = true
 		color = Color.White.toArgb()
