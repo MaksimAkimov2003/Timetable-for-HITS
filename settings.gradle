@@ -27,4 +27,4 @@ include ':feature:groups_screen'
 include ':feature:start_screen'
 include ':feature:auditories_screen'
 
-include ':mainMenu'
+include ':feature:mainMenu'

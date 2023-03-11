@@ -44,11 +44,17 @@ fun MainMenuScreen() {
 				ListItem(text = item.key, imageId = item.value)
 			}
 
-			Image(
-				painter = footerPainter,
-				contentDescription = null,
-				modifier = Modifier.padding(top = 16.dp)
-			)
+			Box(
+				modifier = Modifier
+					.padding(top = 16.dp)
+					.fillMaxSize(),
+				contentAlignment = Alignment.BottomStart
+			) {
+				Image(
+					painter = footerPainter,
+					contentDescription = null,
+				)
+			}
 		}
 	}
 }
