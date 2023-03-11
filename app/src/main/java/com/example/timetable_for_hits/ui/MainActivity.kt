@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.example.mainmenu.ui.MainMenuScreen
 import com.example.resources.theme.TimetableTheme
+import com.example.start_screen.StartScreen
 
 class MainActivity : ComponentActivity() {
 
@@ -19,7 +20,7 @@ class MainActivity : ComponentActivity() {
 		super.onCreate(savedInstanceState)
 		setContent {
 			TimetableTheme {
-				PreviewMainActivity()
+				StartScreen()
 			}
 		}
 	}
