@@ -10,27 +10,36 @@ private const val userTimetableTypeValueKey = "USER_TIMETABLE_TYPE_VALUE_KEY"
 class UserStorage(private val sharedPrefs: SharedPreferences): IUserStorage {
 
     override fun getUserData(): UserData {
-        val type = sharedPrefs.getInt(userTimetableTypeKey, -1)
+        val type = sharedPrefs.getInt(userTimetableTypeKey, TimetableTypeEntity.Unauthorized.key)
         val value = sharedPrefs.getString(userTimetableTypeValueKey, "")
         val data = UserData(
             data = when(type) {
-                0 -> TimetableType.Group
-                1 -> TimetableType.Teacher
-                2 -> TimetableType.Auditory
-                else -> TimetableType.Group
+                0       -> TimetableType.Group
+                1       -> TimetableType.Teacher
+                2       -> TimetableType.Auditory
+                else    -> TimetableType.Unauthorized
             }
         )
-        data.data.value = value?: ""
+        data.data.value = value ?: ""
         return data
     }
 
     override fun saveUserData(data: UserData) {
         val type = when(data.data) {
+            TimetableType.Unauthorized -> TimetableTypeEntity.Unauthorized.key
             TimetableType.Group -> TimetableTypeEntity.Group.key
             TimetableType.Teacher -> TimetableTypeEntity.Teacher.key
             TimetableType.Auditory -> TimetableTypeEntity.Auditory.key
         }
         val value = data.data.value
+        putTimetableType(type, value)
+    }
+
+    override fun clearUserData() {
+        putTimetableType(TimetableTypeEntity.Unauthorized.key, "")
+    }
+
+    private fun putTimetableType(type: Int, value: String) {
         sharedPrefs
             .edit()
             .putInt(userTimetableTypeKey, type)
