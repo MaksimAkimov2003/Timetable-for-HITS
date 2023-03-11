@@ -37,4 +37,5 @@ dependencies {
 	implementation project(":mockapiserver")
 	implementation project(":network")
 	implementation project(':core:resources')
+	implementation project(':userStorage')
 }
