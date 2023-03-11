@@ -12,7 +12,7 @@ import org.koin.dsl.module
 
 val teachersScreenModule = module {
 	viewModel {
-		TeachersViewModel(getTeachersListUseCase = get())
+		TeachersViewModel(getTeachersListUseCase = get(), saveUserDataUseCase = get())
 	}
 	factory { GetTeachersListUseCase(repository = get()) }
 	single { TeachersRepository(dataSource = get()) }

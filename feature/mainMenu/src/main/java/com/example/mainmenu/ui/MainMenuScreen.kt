@@ -1,6 +1,5 @@
 package com.example.mainmenu.ui
 
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -18,13 +17,19 @@ import androidx.compose.ui.draw.paint
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.mainmenu.R
+import com.example.mainmenu.presentation.MainMenuViewModel
 import com.example.resources.theme.TimetableTheme
 import com.example.resources.theme.mainMenuBorder
+import com.example.screens.Screen
+import org.koin.androidx.compose.koinViewModel
 
-@Preview(widthDp = 500, heightDp = 1000)
 @Composable
-fun MainMenuScreen() {
+fun MainMenuScreen(
+	mainMenuViewModel: MainMenuViewModel = koinViewModel(),
+	navController: NavController
+) {
 	val itemsMap = remember {
 		createItemsMap()
 	}
@@ -41,7 +46,7 @@ fun MainMenuScreen() {
 				.background(color = MaterialTheme.colors.background)
 		) {
 			for (item in itemsMap) {
-				ListItem(text = item.key, imageId = item.value)
+				ListItem(text = item.key, imageId = item.value, navController, mainMenuViewModel)
 			}
 
 			Box(
@@ -62,7 +67,9 @@ fun MainMenuScreen() {
 @Composable
 private fun ListItem(
 	text: String,
-	imageId: Int
+	imageId: Int,
+	navController: NavController,
+	mainMenuViewModel: MainMenuViewModel
 ) {
 	val iconPainter = painterResource(id = imageId)
 	val buttonPainter = painterResource(id = R.drawable.item_button)
@@ -85,7 +92,7 @@ private fun ListItem(
 					color = mainMenuBorder,
 					shape = RoundedCornerShape(10.dp)
 				)
-				.clickable { navigateAfterClickOnItem() }
+				.clickable { navigateAfterClickOnItem(text, navController, mainMenuViewModel) }
 				.wrapContentHeight()
 				.fillMaxWidth(),
 			verticalAlignment = Alignment.CenterVertically
@@ -119,7 +126,7 @@ private fun ListItem(
 					.fillMaxWidth()
 			) {
 				IconButton(
-					onClick = { navigateAfterClickOnItem() },
+					onClick = { navigateAfterClickOnItem(text, navController, mainMenuViewModel) },
 					modifier = Modifier
 						.paint(buttonPainter)
 						.padding(end = 16.dp)
@@ -188,6 +195,17 @@ private fun createItemsMap(): Map<String, Int> = mapOf(
 	"Удалить данные" to R.drawable.item_delete_data
 )
 
-private fun navigateAfterClickOnItem() {
-	Log.e("TEST", "clicked")
+private fun navigateAfterClickOnItem(text: String, navController: NavController, mainMenuViewModel: MainMenuViewModel) {
+	when (text) {
+		"Группы"         -> navController.navigate(Screen.FacultiesScreen.route)
+		"Преподаватели"  -> navController.navigate(Screen.TeachersScreen.route)
+		"Аудитории"      -> navController.navigate(Screen.AuditoriesScreen.route)
+
+		"Удалить данные" -> {
+			mainMenuViewModel.deleteData()
+			navController.navigate(Screen.StartScreen.route)
+		}
+
+		else             -> Unit
+	}
 }

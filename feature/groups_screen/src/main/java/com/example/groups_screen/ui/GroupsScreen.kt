@@ -3,8 +3,10 @@ package com.example.groups_screen.ui
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.navigation.NavController
 import com.example.groups_screen.presentation.GroupsViewModel
 import com.example.groups_screen.presentation.GroupsViewModelState
+import com.example.screens.Screen
 import com.example.shared.choosing_screens.data.ChoosingScreenModel
 import com.example.shared.choosing_screens.ui.ChoosingScreenContent
 import com.example.shared.choosing_screens.ui.Loading
@@ -14,7 +16,8 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun GroupsScreen(
 	viewModel: GroupsViewModel = koinViewModel(),
-	disciplineId: String
+	disciplineId: String,
+	navController: NavController
 ) {
 	val vmState = viewModel.state.observeAsState(initial = GroupsViewModelState.Loading)
 
@@ -25,7 +28,10 @@ fun GroupsScreen(
 	when (val currentState = vmState.value) {
 		is GroupsViewModelState.Loading -> Loading()
 		is GroupsViewModelState.Content -> ChoosingScreenContent(
-			onItemClick = { /*TODO*/ },
+			onItemClick = { itemValue ->
+				viewModel.saveData(groupNumber = itemValue)
+				navController.navigate(Screen.MainMenuScreen.route)
+			},
 			content = ChoosingScreenModel(
 				title = ScreenTypes.GroupsScreen.title,
 				hint = ScreenTypes.GroupsScreen.hint

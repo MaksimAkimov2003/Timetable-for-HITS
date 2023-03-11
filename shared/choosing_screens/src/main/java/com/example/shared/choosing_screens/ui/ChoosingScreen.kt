@@ -20,38 +20,13 @@ import com.example.shared.choosing_screens.data.ChoosingScreenModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-@Preview
-@Composable
-fun ChoosingScreenContent_Preview(
-) {
-
-	ChoosingScreenContent(
-		onItemClick = {},
-		content = ChoosingScreenModel(
-			title = ScreenTypes.GroupsScreen.title,
-			hint = ScreenTypes.GroupsScreen.hint
-		),
-		itemsList = listOf(
-			"94954", "34234", "34234", "3423454",
-			"94954", "34234", "34234", "3423454",
-			"94954", "34234", "34234", "3423454",
-			"94954", "34234", "34234", "3423454",
-			"94954", "34234", "34234", "3423454",
-			"94954", "34234", "34234", "3423454",
-			"94954", "34234", "34234", "3423454",
-			"94954", "34234", "34234", "3423454",
-			"94954", "34234", "34234", "3423454",
-			"94954", "34234", "34234", "3423454",
-			"94954", "34234", "34234", "3423454",
-		)
-	)
-}
-
 @Composable
 fun ChoosingScreenContent(
-	onItemClick: () -> Unit,
+	onItemClick: (
+		itemValue: String,
+	) -> Unit,
 	content: ChoosingScreenModel,
-	itemsList: List<String>
+	itemsList: List<String>,
 ) {
 	TimetableTheme() {
 		Column(
@@ -104,7 +79,7 @@ fun ChoosingScreenContent(
 
 			ItemsList(
 				itemsList = displayedList,
-				onItemClick = onItemClick
+				onItemClick = onItemClick,
 			)
 
 			if (!isFirstInput) {
@@ -124,7 +99,9 @@ fun ChoosingScreenContent(
 @Composable
 private fun ItemsList(
 	itemsList: List<String>,
-	onItemClick: () -> Unit
+	onItemClick: (
+		itemValue: String,
+	) -> Unit,
 ) {
 	TimetableTheme() {
 		LazyColumn(contentPadding = PaddingValues(start = 24.dp)) {
@@ -142,7 +119,7 @@ private fun ItemsList(
 							bottom = 16.dp
 						)
 						.clickable {
-							onItemClick.invoke()
+							onItemClick.invoke(item)
 						}
 				)
 				Divider(color = choosingScreens)

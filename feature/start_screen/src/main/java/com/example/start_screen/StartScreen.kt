@@ -2,6 +2,7 @@ package com.example.start_screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
@@ -13,10 +14,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.resources.theme.TimetableTheme
+import com.example.screens.Screen
 import com.example.shared.choosing_screens.ui.ScreenTypes
 
 private val localTextTitle = TextStyle(
@@ -31,9 +33,8 @@ val localTextBody = TextStyle(
 	color = Color(0xFFFFFFFF)
 )
 
-@Preview
 @Composable
-fun StartScreen() {
+fun StartScreen(navController: NavController) {
 	TimetableTheme() {
 		Column(
 			modifier = Modifier
@@ -63,6 +64,7 @@ fun StartScreen() {
 					)
 					.fillMaxWidth()
 					.height(80.dp)
+					.clickable { navController.navigate(Screen.FacultiesScreen.route) }
 			)
 			{
 				val painter = painterResource(id = R.drawable.student)
@@ -105,6 +107,7 @@ fun StartScreen() {
 					)
 					.fillMaxWidth()
 					.height(80.dp)
+					.clickable { navController.navigate(Screen.TeachersScreen.route) }
 			)
 			{
 				val painter = painterResource(id = R.drawable.teacher)

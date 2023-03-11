@@ -28,4 +28,5 @@ dependencies {
 
 	implementation project(':shared:choosing_screens')
 	implementation project(':network')
+	implementation project(":core:screens")
 }

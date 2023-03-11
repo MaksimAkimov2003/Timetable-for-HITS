@@ -19,6 +19,10 @@ dependencies {
 	implementation Dependencies.COMPOSE_JUNIT
 	implementation Dependencies.COMPOSE_TOOLING
 	implementation Dependencies.COMPOSE_TEST_MANIFEST
+	implementation Dependencies.COMPOSE_KOIN
+	implementation Dependencies.COMPOSE_LIVEDATA
 
 	implementation project(':core:resources')
+	implementation project(":core:screens")
+	implementation project(":userStorage")
 }
