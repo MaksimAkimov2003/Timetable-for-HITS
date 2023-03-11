@@ -118,28 +118,35 @@ internal fun getFake(
 			)
 		}
 
-		"/api/groups/42"     -> {
+		"/api/groups/42"  -> {
 			response.createResponse(
 				description = context.readFileFromAssets(GroupsAssetReader.direction42),
 				body = context.readFileFromAssets(GroupsAssetReader.direction42)
 			)
 		}
 
-		"/api/groups/51"     -> {
+		"/api/groups/51"  -> {
 			response.createResponse(
 				description = context.readFileFromAssets(GroupsAssetReader.direction51),
 				body = context.readFileFromAssets(GroupsAssetReader.direction51)
 			)
 		}
 
-		"/api/groups/52"     -> {
+		"/api/groups/52"  -> {
 			response.createResponse(
 				description = context.readFileFromAssets(GroupsAssetReader.direction52),
 				body = context.readFileFromAssets(GroupsAssetReader.direction52)
 			)
 		}
 
-		else                 -> {
+		"/api/auditories" -> {
+			response.createResponse(
+				description = context.readFileFromAssets(AuditoriesAssetReader.auditories),
+				body = context.readFileFromAssets(AuditoriesAssetReader.auditories)
+			)
+		}
+
+		else              -> {
 			error404(response)
 		}
 	}

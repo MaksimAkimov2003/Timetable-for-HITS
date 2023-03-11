@@ -25,5 +25,6 @@ include ':feature:faculties_screen'
 include ':feature:directions_screen'
 include ':feature:groups_screen'
 include ':feature:start_screen'
+include ':feature:auditories_screen'
 
 include ':mainMenu'

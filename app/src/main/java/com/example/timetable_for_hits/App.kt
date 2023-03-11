@@ -1,6 +1,7 @@
 package com.example.timetable_for_hits
 
 import android.app.Application
+import com.example.auditories_screen.di.auditoriesScreenModule
 import com.example.directions_screen.di.directionsScreenModule
 import com.example.faculties_screen.di.facultiesScreenModule
 import com.example.feature.teachers_screen.di.teachersScreenModule
@@ -26,6 +27,7 @@ class App : Application() {
 				facultiesScreenModule,
 				directionsScreenModule,
 				groupsScreenModule,
+				auditoriesScreenModule,
 				mainMenuModule,
 			)
 		}

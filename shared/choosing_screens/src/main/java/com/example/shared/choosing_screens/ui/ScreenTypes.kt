@@ -25,6 +25,12 @@ sealed class ScreenTypes {
 		const val hint: String = "Group number"
 	}
 
+	object AuditoriesScreen : ScreenTypes() {
+
+		const val title: String = "Fill in auditory number"
+		const val hint: String = "Auditory number"
+	}
+
 	object StartScreen : ScreenTypes() {
 
 		const val title: String = "First, who will use the application?"
