@@ -38,4 +38,12 @@ dependencies {
 	implementation project(":network")
 	implementation project(':core:resources')
 	implementation project(':userStorage')
+	implementation project(":shared:choosing_screens")
+	implementation project(":feature:teachers_screen")
+	implementation project(":feature:faculties_screen")
+	implementation project(":feature:directions_screen")
+	implementation project(":feature:groups_screen")
+	implementation project(":feature:start_screen")
+	implementation project(":feature:auditories_screen")
+	implementation project(':feature:mainMenu')
 }
