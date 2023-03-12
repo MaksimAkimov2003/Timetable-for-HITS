@@ -15,7 +15,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.mainmenu.R
@@ -37,7 +36,7 @@ fun MainMenuScreen(
 	val footerPainter = painterResource(id = com.example.core.resources.R.drawable.big_cirles)
 
 	TimetableTheme() {
-		CreateToolbar()
+		CreateToolbar(navController)
 
 		Column(
 			modifier = Modifier
@@ -139,9 +138,8 @@ private fun ListItem(
 
 }
 
-@Preview(widthDp = 500, heightDp = 100)
 @Composable
-private fun CreateToolbar() {
+private fun CreateToolbar(navController: NavController) {
 	val painter = painterResource(id = com.example.core.resources.R.drawable.small_circles)
 	val buttonPainter = painterResource(id = com.example.core.resources.R.drawable.back_button)
 
@@ -154,7 +152,7 @@ private fun CreateToolbar() {
 				.padding(top = 16.dp)
 		) {
 			IconButton(
-				onClick = { /*TODO("Обработать нажатие на кнопку "назад"")*/ },
+				onClick = { navController.navigate(Screen.WeekTimetableScreen.route) },
 				modifier = Modifier
 					.paint(buttonPainter)
 					.padding(start = 16.dp)

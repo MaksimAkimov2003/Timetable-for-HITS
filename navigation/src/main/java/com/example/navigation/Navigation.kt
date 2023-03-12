@@ -94,16 +94,17 @@ fun Navigation() {
 				val getUserDataUseCase by inject<GetUserDataUseCase>(GetUserDataUseCase::class.java)
 				val savedType = getUserDataUseCase.invoke().data
 
-				val testData = TimetableType.Group
-				testData.value = "1"
+				val data = TimetableType.Group
+				data.value = "1"
 
-				WeekTimetableScreen(timetableType = testData, navController = navController)
+				WeekTimetableScreen(timetableType = data, navController = navController)
 			} else {
 				navController.previousBackStackEntry?.arguments?.getParcelable<TimetableType>("KEY")?.let {
 					WeekTimetableScreen(timetableType = it, navController = navController)
 				}
 			}
 
+			//TODO("Заменить дефолтное data.value = 1 на data.value = savedType.value")
 		}
 	}
 }
