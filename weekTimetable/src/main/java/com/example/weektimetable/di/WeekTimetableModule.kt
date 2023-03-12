@@ -22,7 +22,6 @@ val weekTimetableModule = module {
 	factory { GetWeekTimetableByAuditoryUseCase(repository = get()) }
 	factory { GetWeekTimetableByTeacherUseCase(repository = get()) }
 	viewModel { WeekTimetableViewModel(
-		saveUserDataUseCase = get(),
 		getUserDataUseCase = get(),
 		getWeekTimetableByGroupUseCase = get(),
 		getWeekTimetableByAuditoryUseCase = get(),
