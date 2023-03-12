@@ -14,4 +14,8 @@ class UserStorageRepository(private val storage: IUserStorage): IUserStorageRepo
         storage.saveUserData(data)
     }
 
+    override fun clearUserData() {
+        storage.clearUserData()
+    }
+
 }

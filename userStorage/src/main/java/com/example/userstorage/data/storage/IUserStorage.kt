@@ -6,5 +6,6 @@ interface IUserStorage {
 
     fun getUserData(): UserData
     fun saveUserData(data: UserData)
+    fun clearUserData()
 
 }

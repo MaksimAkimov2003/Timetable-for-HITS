@@ -19,22 +19,36 @@ internal val Typography = Typography(
 		fontSize = 14.sp,
 		color = textPrimary
 	),
-	subtitle1 = TextStyle(
-		fontFamily = FontFamily.Default,
-		fontWeight = FontWeight.Normal,
-		fontSize = 14.sp,
-		color = textHint
-	),
-	subtitle2 = TextStyle(
-		fontFamily = FontFamily.Default,
-		fontWeight = FontWeight.Normal,
-		fontSize = 12.sp,
-		color = textHint
-	),
 	caption = TextStyle(
 		fontFamily = FontFamily.Default,
 		fontWeight = FontWeight.Normal,
 		fontSize = 16.sp,
 		color = textPrimary
+		fontSize = 16.sp
+	),
+	subtitle1 = TextStyle(
+		fontWeight = FontWeight.SemiBold,
+		fontSize = 17.sp,
+		fontFamily = FontFamily.Default,
+		color = onSurface
+	),
+	subtitle2 = TextStyle(
+		fontWeight = FontWeight.Medium,
+		fontSize = 15.sp,
+		color = onPrimary,
+		fontFamily = FontFamily.Default
+	),
+	body2 = TextStyle(
+		fontWeight = FontWeight.Medium,
+		fontSize = 15.sp,
+		color = onSurface,
+		fontFamily = FontFamily.Default,
+	),
+	h5 = TextStyle(
+		fontFamily = FontFamily.Default,
+		fontWeight = FontWeight.Normal,
+		fontSize = 24.sp,
+		color = onSecondary
 	)
+
 )
