@@ -1,5 +1,6 @@
 package com.example.timetable_for_hits.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -12,6 +13,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.example.mainmenu.ui.MainMenuScreen
 import com.example.resources.theme.TimetableTheme
+import com.example.weektimetable.ui.WeekTimetableActivity
+import com.github.terrakok.cicerone.Cicerone
+import com.github.terrakok.cicerone.Router
 
 class MainActivity : ComponentActivity() {
 
@@ -22,6 +26,7 @@ class MainActivity : ComponentActivity() {
 				MainMenuScreen()
 			}
 		}
+		startActivity(Intent(this@MainActivity, WeekTimetableActivity::class.java))
 	}
 }
 

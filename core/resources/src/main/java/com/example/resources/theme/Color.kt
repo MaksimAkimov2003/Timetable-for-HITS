@@ -2,6 +2,10 @@ package com.example.resources.theme
 
 import androidx.compose.ui.graphics.Color
 
+internal val textPrimary		= Color(0xFF2B3056)
+internal val textHint			= Color(0xFF84879D)
+
+val white				= Color(0xFFFFFFFF)
 val primary 			= Color(0xFF7F8AE8)
 val primaryVariant 		= Color(0xFF8DADF8)
 val secondary 			= Color(0xFF9B8AF0)

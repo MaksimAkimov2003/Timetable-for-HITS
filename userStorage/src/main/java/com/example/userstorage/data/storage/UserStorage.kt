@@ -32,14 +32,6 @@ class UserStorage(private val sharedPrefs: SharedPreferences): IUserStorage {
             TimetableType.Auditory -> TimetableTypeEntity.Auditory.key
         }
         val value = data.data.value
-        putTimetableType(type, value)
-    }
-
-    override fun clearUserData() {
-        putTimetableType(TimetableTypeEntity.Unauthorized.key, "")
-    }
-
-    private fun putTimetableType(type: Int, value: String) {
         sharedPrefs
             .edit()
             .putInt(userTimetableTypeKey, type)

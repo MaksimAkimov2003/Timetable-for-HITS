@@ -1,0 +1,416 @@
+{
+  "Days": [
+    {
+      "WeekDay": "Понедельник",
+      "Day": "6 Марта",
+      "countClasses": 3,
+      "timeSlotDTOs": [
+        {
+          "SlotNumber": 2,
+          "Pairs": [
+            {
+              "LessonType": "Семинар",
+              "Proffessor": "Гальперина Екатерина Асимовна",
+              "Auditory": "227 (2) Учебная аудитория",
+              "Discipline": "Иностранный язык",
+              "Groups": [
+                {
+                  "Number": "972102 (1)",
+                  "Direction": {
+                    "id": "1",
+                    "Name": "Программная инженерия",
+                    "Number": "09.03.04",
+                    "Faculty": {
+                      "id": "1",
+                      "Name": "HItS",
+                      "Number": "97"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "SlotNumber": 4,
+          "Pairs": [
+            {
+              "LessonType": "Семинар",
+              "Proffessor": "Хакимова Альфия Амировна",
+              "Auditory": "227 (2) Учебная аудитория",
+              "Discipline": "Иностранный язык",
+              "Groups": [
+                {
+                  "Number": "972102 (2)",
+                  "Direction": {
+                    "id": "1",
+                    "Name": "Программная инженерия",
+                    "Number": "09.03.04",
+                    "Faculty": {
+                      "id": "1",
+                      "Name": "HItS",
+                      "Number": "97"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "SlotNumber": 6,
+          "Pairs": [
+            {
+              "LessonType": "Лекция",
+              "Proffessor": "Волков Максим Николаевич",
+              "Auditory": "онлайн",
+              "Discipline": "Тестирование программного обеспечения",
+              "Groups": [
+                {
+                  "Number": "972102",
+                  "Direction": {
+                    "id": "1",
+                    "Name": "Программная инженерия",
+                    "Number": "09.03.04",
+                    "Faculty": {
+                      "id": "1",
+                      "Name": "HItS",
+                      "Number": "97"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "WeekDay": "Вторник",
+      "Day": "7 Марта",
+      "countClasses": 1,
+      "timeSlotDTOs": [
+        {
+          "SlotNumber": 4,
+          "Pairs": [
+            {
+              "LessonType": "Семинар",
+              "Proffessor": "Змеев Денис Олегович",
+              "Auditory": "233 (2) Компьютерный класс",
+              "Discipline": "Основы командной разработки",
+              "Groups": [
+                {
+                  "Number": "972102",
+                  "Direction": {
+                    "id": "1",
+                    "Name": "Программная инженерия",
+                    "Number": "09.03.04",
+                    "Faculty": {
+                      "id": "1",
+                      "Name": "HItS",
+                      "Number": "97"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "WeekDay": "Среда",
+      "Day": "8 Марта",
+      "countClasses": 0,
+      "timeSlotDTOs": [  ]
+    },
+
+    {
+      "WeekDay": "Четверг",
+      "Day": "9 Марта",
+      "countClasses": 3,
+      "timeSlotDTOs": [
+        {
+          "SlotNumber": 2,
+          "Pairs": [
+            {
+              "LessonType": "Лекция",
+              "Proffessor": "Красавин Дмитрий Сергеевич",
+              "Auditory": "302 (2) Учебная аудитория",
+              "Discipline": "Основы машинного обучения",
+              "Groups": [
+                {
+                  "Number": "972102",
+                  "Direction": {
+                    "id": "1",
+                    "Name": "Программная инженерия",
+                    "Number": "09.03.04",
+                    "Faculty": {
+                      "id": "1",
+                      "Name": "HItS",
+                      "Number": "97"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "SlotNumber": 3,
+          "Pairs": [
+            {
+              "LessonType": "Практика",
+              "Proffessor": "Хакимова Альфия Амировна",
+              "Auditory": "227 (2) Учебная аудитория",
+              "Discipline": "Английский язык (выравнивающий курс)",
+              "Groups": [
+                {
+                  "Number": "972102 (2)",
+                  "Direction": {
+                    "id": "1",
+                    "Name": "Программная инженерия",
+                    "Number": "09.03.04",
+                    "Faculty": {
+                      "id": "1",
+                      "Name": "HItS",
+                      "Number": "97"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "SlotNumber": 5,
+          "Pairs": [
+            {
+              "LessonType": "Практика",
+              "Proffessor": "Иноземцова Татьяна Андреевна",
+              "Auditory": "Спортивный зал 97 (14)",
+              "Discipline": "Элективные дисциплины по физической культуре и спорту",
+              "Groups": [
+                {
+                  "Number": "972102",
+                  "Direction": {
+                    "id": "1",
+                    "Name": "Программная инженерия",
+                    "Number": "09.03.04",
+                    "Faculty": {
+                      "id": "1",
+                      "Name": "HItS",
+                      "Number": "97"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "WeekDay": "Пятница",
+      "Day": "10 Марта",
+      "countClasses": 3,
+      "timeSlotDTOs": [
+        {
+          "SlotNumber": 2,
+          "Pairs": [
+            {
+              "LessonType": "Практика",
+              "Proffessor": "Красавин Дмитрий Сергеевич",
+              "Auditory": "236 (2) Компьютерный класс",
+              "Discipline": "Основы машинного обучения",
+              "Groups": [
+                {
+                  "Number": "972102",
+                  "Direction": {
+                    "id": "1",
+                    "Name": "Программная инженерия",
+                    "Number": "09.03.04",
+                    "Faculty": {
+                      "id": "1",
+                      "Name": "HItS",
+                      "Number": "97"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "SlotNumber": 3,
+          "Pairs": [
+            {
+              "LessonType": "Семинар",
+              "Proffessor": "Гальперина Екатерина Асимовна",
+              "Auditory": "214 (2) Учебная аудитория",
+              "Discipline": "Иностранный язык",
+              "Groups": [
+                {
+                  "Number": "972102 (1)",
+                  "Direction": {
+                    "id": "1",
+                    "Name": "Программная инженерия",
+                    "Number": "09.03.04",
+                    "Faculty": {
+                      "id": "1",
+                      "Name": "HItS",
+                      "Number": "97"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "LessonType": "Семинар",
+              "Proffessor": "Хакимова Альфия Амировна",
+              "Auditory": "218 (2) Учебная аудитория",
+              "Discipline": "Иностранный язык",
+              "Groups": [
+                {
+                  "Number": "972102 (2)",
+                  "Direction": {
+                    "id": "1",
+                    "Name": "Программная инженерия",
+                    "Number": "09.03.04",
+                    "Faculty": {
+                      "id": "1",
+                      "Name": "HItS",
+                      "Number": "97"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "SlotNumber": 5,
+          "Pairs": [
+            {
+              "LessonType": "Практика",
+              "Proffessor": "Змеев Денис Олегович",
+              "Auditory": "Онлайн",
+              "Discipline": "Разработка и анализ требований",
+              "Groups": [
+                {
+                  "Number": "972102",
+                  "Direction": {
+                    "id": "1",
+                    "Name": "Программная инженерия",
+                    "Number": "09.03.04",
+                    "Faculty": {
+                      "id": "1",
+                      "Name": "HItS",
+                      "Number": "97"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "WeekDay": "Суббота",
+      "Day": "11 Марта",
+      "countClasses": 3,
+      "timeSlotDTOs": [
+        {
+          "SlotNumber": 3,
+          "Pairs": [
+            {
+              "LessonType": "Лекция",
+              "Proffessor": "Волков Максим Николаевич",
+              "Auditory": "онлайн",
+              "Discipline": "Тестирование программного обеспечения",
+              "Groups": [
+                {
+                  "Number": "972102",
+                  "Direction": {
+                    "id": "1",
+                    "Name": "Программная инженерия",
+                    "Number": "09.03.04",
+                    "Faculty": {
+                      "id": "1",
+                      "Name": "HItS",
+                      "Number": "97"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "SlotNumber": 4,
+          "Pairs": [
+            {
+              "LessonType": "Практика",
+              "Proffessor": "Змеев Денис Олегович",
+              "Auditory": "Онлайн",
+              "Discipline": "Разработка и анализ требований",
+              "Groups": [
+                {
+                  "Number": "972102",
+                  "Direction": {
+                    "id": "1",
+                    "Name": "Программная инженерия",
+                    "Number": "09.03.04",
+                    "Faculty": {
+                      "id": "1",
+                      "Name": "HItS",
+                      "Number": "97"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "SlotNumber": 5,
+          "Pairs": [
+            {
+              "LessonType": "Практика",
+              "Proffessor": "Иноземцова Татьяна Андреевна",
+              "Auditory": "Спортивный зал 97 (14)",
+              "Discipline": "Элективные дисциплины по физической культуре и спорту",
+              "Groups": [
+                {
+                  "Number": "972102",
+                  "Direction": {
+                    "id": "1",
+                    "Name": "Программная инженерия",
+                    "Number": "09.03.04",
+                    "Faculty": {
+                      "id": "1",
+                      "Name": "HItS",
+                      "Number": "97"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "WeekDay": "Воскресенье",
+      "Day": "12 Марта",
+      "countClasses": 0,
+      "timeSlotDTOs": [  ]
+    }
+  ]
+}

@@ -19,6 +19,24 @@ internal fun getFake(
 				body = context.readFileFromAssets(TestAssetReader.testAsset)
 			)
 		}
+		"/api/schedule/group/1"					-> {
+			response.createResponse(
+				description = context.readFileFromAssets(TestAssetReader.weekTimetable),
+				body = context.readFileFromAssets(TestAssetReader.weekTimetable)
+			)
+		}
+		"/api/schedule/auditory/1"				-> {
+			response.createResponse(
+				description = context.readFileFromAssets(TestAssetReader.weekTimetable),
+				body = context.readFileFromAssets(TestAssetReader.weekTimetable)
+			)
+		}
+		"/api/schedule/teacher/1"				-> {
+			response.createResponse(
+				description = context.readFileFromAssets(TestAssetReader.weekTimetable),
+				body = context.readFileFromAssets(TestAssetReader.weekTimetable)
+			)
+		}
 
 		"/api/teachers"            -> {
 			response.createResponse(

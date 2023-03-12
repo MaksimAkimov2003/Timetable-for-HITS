@@ -9,6 +9,7 @@ import com.example.groups_screen.di.groupsScreenModule
 import com.example.mainmenu.di.mainMenuModule
 import com.example.network.di.networkModule
 import com.example.userstorage.di.userStorageModule
+import com.example.weektimetable.di.weekTimetableModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -24,6 +25,7 @@ class App : Application() {
 
 			modules(
 				networkModule,
+				weekTimetableModule,
 				userStorageModule
 				teachersScreenModule,
 				facultiesScreenModule,
