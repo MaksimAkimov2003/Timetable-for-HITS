@@ -97,14 +97,14 @@ fun Navigation() {
 				val data = TimetableType.Group
 				data.value = "1"
 
+				//TODO("Заменить дефолтное data.value = 1 на data.value = savedType.value")
+
 				WeekTimetableScreen(timetableType = data, navController = navController)
 			} else {
 				navController.previousBackStackEntry?.arguments?.getParcelable<TimetableType>("KEY")?.let {
 					WeekTimetableScreen(timetableType = it, navController = navController)
 				}
 			}
-
-			//TODO("Заменить дефолтное data.value = 1 на data.value = savedType.value")
 		}
 	}
 }

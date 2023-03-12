@@ -134,11 +134,6 @@ private fun ItemsList(
 	}
 }
 
-@Composable
-fun ChoosingScreenEmptyContent() {
-
-}
-
 @Preview
 @Composable
 fun Loading() {

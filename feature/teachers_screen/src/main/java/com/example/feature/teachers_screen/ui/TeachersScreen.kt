@@ -41,12 +41,12 @@ fun TeachersScreen(
 				val data = TimetableType.Teacher
 				data.value = "1"
 
+				//TODO("Заменить дефолтное data.value = 1 на data.value = teacherId")
+
 				navController.navigateWithParams(
 					route = Screen.WeekTimetableScreen.route,
 					params = bundleOf("KEY" to data)
 				)
-
-				//TODO("Заменить дефолтное data.value = 1 на data.value = teacherId")
 			},
 			content = ChoosingScreenModel(
 				title = ScreenTypes.TeachersScreen.title,

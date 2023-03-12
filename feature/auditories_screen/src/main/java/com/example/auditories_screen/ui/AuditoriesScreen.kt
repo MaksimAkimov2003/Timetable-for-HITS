@@ -34,11 +34,12 @@ fun AuditoriesScreen(
 				val data = TimetableType.Auditory
 				data.value = "1"
 
+				//TODO("Заменить дефолтное data.value = 1 на data.value = itemValue")
+
 				navController.navigateWithParams(
 					route = Screen.WeekTimetableScreen.route,
 					params = bundleOf("KEY" to data)
 				)
-				//TODO("Заменить дефолтное data.value = 1 на data.value = itemValue")
 			},
 			content = ChoosingScreenModel(
 				title = ScreenTypes.AuditoriesScreen.title,
