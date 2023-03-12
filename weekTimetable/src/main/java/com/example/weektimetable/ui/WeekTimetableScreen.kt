@@ -24,8 +24,8 @@ import com.example.userstorage.domain.entity.TimetableType
 import com.example.weektimetable.presentation.WeekTimetableViewModel
 
 @Composable
-fun WeekTimetableScreen(viewModel: WeekTimetableViewModel, context: Context) {
-	viewModel.loadTimetable()
+fun WeekTimetableScreen(viewModel: WeekTimetableViewModel, context: Context, timetableType: TimetableType) {
+	viewModel.loadTimetable(timetableType)
 	Box(
 		modifier = Modifier
 			.background(MaterialTheme.colors.secondaryVariant)
@@ -38,28 +38,28 @@ fun WeekTimetableScreen(viewModel: WeekTimetableViewModel, context: Context) {
 			contentDescription = ""
 		)
 		Box(modifier = Modifier.padding(16.dp, 16.dp, 16.dp, 32.dp)) {
-			DrawContent(viewModel, context)
+			DrawContent(viewModel, context, timetableType)
 		}
 	}
 }
 
 @Composable
-private fun DrawContent(viewModel: WeekTimetableViewModel, context: Context) {
+private fun DrawContent(viewModel: WeekTimetableViewModel, context: Context, timetableType: TimetableType) {
 	when(viewModel.state.collectAsState().value) {
 		is WeekTimetableState.Initial	-> { throw java.lang.IllegalStateException("ViewModel state should be init") }
-		is WeekTimetableState.Loading 	-> { RenderLoadingState(viewModel.state.collectAsState().value as WeekTimetableState.Loading, viewModel) }
-		is WeekTimetableState.Error		-> { RenderErrorState(viewModel.state.collectAsState().value as WeekTimetableState.Error, viewModel) }
-		is WeekTimetableState.Content	-> { RenderContentState(viewModel.state.collectAsState().value as WeekTimetableState.Content, viewModel, context) }
+		is WeekTimetableState.Loading 	-> { RenderLoadingState(viewModel.state.collectAsState().value as WeekTimetableState.Loading, viewModel, timetableType) }
+		is WeekTimetableState.Error		-> { RenderErrorState(viewModel.state.collectAsState().value as WeekTimetableState.Error, viewModel, timetableType) }
+		is WeekTimetableState.Content	-> { RenderContentState(viewModel.state.collectAsState().value as WeekTimetableState.Content, viewModel, context, timetableType) }
 	}
 }
 
 @Composable
-private fun RenderLoadingState(state: WeekTimetableState.Loading, viewModel: WeekTimetableViewModel) {
+private fun RenderLoadingState(state: WeekTimetableState.Loading, viewModel: WeekTimetableViewModel, timetableType: TimetableType) {
 	Column {
 		DrawHeader(
 			getTitle(state.timetableType),
 			state.currentDate,
-			formatCurrentWeek(state.currentWeek), viewModel)
+			formatCurrentWeek(state.currentWeek), viewModel, timetableType)
 		Box(modifier = Modifier
 			.fillMaxWidth()
 			.weight(1f),
@@ -71,19 +71,19 @@ private fun RenderLoadingState(state: WeekTimetableState.Loading, viewModel: Wee
 }
 
 @Composable
-private fun RenderErrorState(state: WeekTimetableState.Error, viewModel: WeekTimetableViewModel) {
+private fun RenderErrorState(state: WeekTimetableState.Error, viewModel: WeekTimetableViewModel, timetableType: TimetableType) {
 	Column {
 		DrawHeader(
 			getTitle(state.timetableType),
 			state.currentDate,
-			formatCurrentWeek(state.currentWeek), viewModel)
+			formatCurrentWeek(state.currentWeek), viewModel, timetableType)
 		Box(modifier = Modifier
 			.fillMaxWidth()
 			.weight(1f),
 			contentAlignment = Alignment.Center) {
 			Column {
 				Text(text = "Не удалось загрузить данные.", textAlign = TextAlign.Center, style = MaterialTheme.typography.body1)
-				Button(onClick = { viewModel.loadTimetable() }, modifier = Modifier.align(Alignment.CenterHorizontally)) {
+				Button(onClick = { viewModel.loadTimetable(timetableType) }, modifier = Modifier.align(Alignment.CenterHorizontally)) {
 					Text(text = "Попробовать снова.", style = MaterialTheme.typography.body2)
 				}
 			}
@@ -93,12 +93,12 @@ private fun RenderErrorState(state: WeekTimetableState.Error, viewModel: WeekTim
 }
 
 @Composable
-private fun RenderContentState(state: WeekTimetableState.Content, viewModel: WeekTimetableViewModel, context: Context) {
+private fun RenderContentState(state: WeekTimetableState.Content, viewModel: WeekTimetableViewModel, context: Context, timetableType: TimetableType) {
 	Column {
 		DrawHeader(
 			title = getTitle(state.timetableType),
 			date = state.currentDate,
-			currentWeek = formatCurrentWeek(state.currentWeek), viewModel)
+			currentWeek = formatCurrentWeek(state.currentWeek), viewModel, timetableType)
 		Box(modifier = Modifier
 			.fillMaxWidth()
 			.weight(1f)
@@ -129,17 +129,17 @@ private fun DrawLoadingSpinner() {
 }
 
 private fun getTitle(timetableType: TimetableType) = when(timetableType) {
-		TimetableType.Group		-> { "${timetableType.prefix} ${timetableType.value}" }
-		TimetableType.Teacher	-> { "${timetableType.prefix} ${timetableType.value}" }
-		TimetableType.Auditory	-> { "${timetableType.prefix} ${timetableType.value}" }
-		else					-> { "" }
-	}
+	TimetableType.Group		-> { "${timetableType.prefix} ${timetableType.value}" }
+	TimetableType.Teacher	-> { "${timetableType.prefix} ${timetableType.value}" }
+	TimetableType.Auditory	-> { "${timetableType.prefix} ${timetableType.value}" }
+	else					-> { "" }
+}
 
 private fun formatCurrentWeek(week: WeekDateEntity) =
 	"${DateFormat.format("MMMM dd", week.startDate)} - ${DateFormat.format("MMMM dd", week.endDate)}"
 
 @Composable
-private fun ColumnScope.DrawHeader(title: String, date: String, currentWeek: String, viewModel: WeekTimetableViewModel) {
+private fun ColumnScope.DrawHeader(title: String, date: String, currentWeek: String, viewModel: WeekTimetableViewModel, timetableType: TimetableType) {
 	Box(modifier = Modifier
 		.align(Alignment.CenterHorizontally)
 		.clip(MaterialTheme.shapes.medium)
@@ -166,7 +166,7 @@ private fun ColumnScope.DrawHeader(title: String, date: String, currentWeek: Str
 		Row(modifier = Modifier
 			.fillMaxWidth()
 			.padding(8.dp, 4.dp)) {
-			IconButton(onClick = { viewModel.loadLastWeek() }) {
+			IconButton(onClick = { viewModel.loadLastWeek(timetableType) }) {
 				Icon(
 					painter = painterResource(id = com.example.core.resources.R.drawable.arrow_to_left),
 					contentDescription = "",
@@ -179,7 +179,7 @@ private fun ColumnScope.DrawHeader(title: String, date: String, currentWeek: Str
 					.weight(1f)
 					.align(Alignment.CenterVertically),
 				textAlign = TextAlign.Center)
-			IconButton(onClick = { viewModel.loadNextWeek() }) {
+			IconButton(onClick = { viewModel.loadNextWeek(timetableType) }) {
 				Icon(
 					painter = painterResource(id = com.example.core.resources.R.drawable.arrow_to_right),
 					contentDescription = "",
@@ -191,7 +191,7 @@ private fun ColumnScope.DrawHeader(title: String, date: String, currentWeek: Str
 }
 
 @Composable
-private fun DrawBottomBar(viewModel: WeekTimetableViewModel) {
+private fun DrawBottomBar(viewModel: WeekTimetableViewModel, timetableType: TimetableType) {
 	Box(modifier = Modifier
 		.padding(vertical = 8.dp)
 		.clip(MaterialTheme.shapes.medium)
@@ -199,28 +199,28 @@ private fun DrawBottomBar(viewModel: WeekTimetableViewModel) {
 		Row(modifier = Modifier
 			.fillMaxWidth()
 			.padding(8.dp, 4.dp)) {
-			IconButton(onClick = { viewModel.loadLastWeek() }) {
+			IconButton(onClick = { viewModel.loadLastWeek(timetableType) }) {
 				Icon(
 					painter = painterResource(id = com.example.core.resources.R.drawable.arrow_to_left),
 					contentDescription = "",
 					tint = MaterialTheme.colors.primary
 				)
 			}
-			IconButton(onClick = { viewModel.loadNextWeek() }) {
+			IconButton(onClick = { viewModel.loadNextWeek(timetableType) }) {
 				Icon(
 					painter = painterResource(id = com.example.core.resources.R.drawable.arrow_to_right),
 					contentDescription = "",
 					tint = MaterialTheme.colors.primary
 				)
 			}
-			IconButton(onClick = { viewModel.loadNextWeek() }) {
+			IconButton(onClick = { viewModel.loadNextWeek(timetableType) }) {
 				Icon(
 					painter = painterResource(id = com.example.core.resources.R.drawable.arrow_to_right),
 					contentDescription = "",
 					tint = MaterialTheme.colors.primary
 				)
 			}
-			IconButton(onClick = { viewModel.loadNextWeek() }) {
+			IconButton(onClick = { viewModel.loadNextWeek(timetableType) }) {
 				Icon(
 					painter = painterResource(id = com.example.core.resources.R.drawable.arrow_to_right),
 					contentDescription = "",
