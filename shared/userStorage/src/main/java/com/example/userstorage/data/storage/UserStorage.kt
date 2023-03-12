@@ -25,14 +25,16 @@ class UserStorage(private val sharedPrefs: SharedPreferences): IUserStorage {
     }
 
     override fun saveUserData(data: UserData) {
-        val type = when(data.data) {
-            TimetableType.Unauthorized -> TimetableTypeEntity.Unauthorized.key
-            TimetableType.Group -> TimetableTypeEntity.Group.key
-            TimetableType.Teacher -> TimetableTypeEntity.Teacher.key
-            TimetableType.Auditory -> TimetableTypeEntity.Auditory.key
+        if (getUserData().data == TimetableType.Unauthorized) {
+            val type = when (data.data) {
+                TimetableType.Unauthorized -> TimetableTypeEntity.Unauthorized.key
+                TimetableType.Group        -> TimetableTypeEntity.Group.key
+                TimetableType.Teacher      -> TimetableTypeEntity.Teacher.key
+                TimetableType.Auditory     -> TimetableTypeEntity.Auditory.key
+            }
+            val value = data.data.value
+            putTimetableType(type, value)
         }
-        val value = data.data.value
-        putTimetableType(type, value)
     }
 
     override fun clearUserData() {

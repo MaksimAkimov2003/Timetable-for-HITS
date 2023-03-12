@@ -31,12 +31,14 @@ fun AuditoriesScreen(
 		is AuditoriesViewModelState.Loading -> Loading()
 		is AuditoriesViewModelState.Content -> ChoosingScreenContent(
 			onItemClick = { itemValue ->
-				val testData = TimetableType.Auditory
-				testData.value = "1"
+				val data = TimetableType.Auditory
+				data.value = "1"
+
+				//TODO("Заменить дефолтное data.value = 1 на data.value = itemValue")
 
 				navController.navigateWithParams(
 					route = Screen.WeekTimetableScreen.route,
-					params = bundleOf("KEY" to testData)
+					params = bundleOf("KEY" to data)
 				)
 			},
 			content = ChoosingScreenModel(

@@ -31,14 +31,21 @@ fun TeachersScreen(
 		is TeachersViewModelState.Loading -> Loading()
 		is TeachersViewModelState.Content -> ChoosingScreenContent(
 			onItemClick = { itemValue ->
-				viewModel.saveData(itemValue)
+				val teacherId = searchTeacherIDByName(
+					name = itemValue,
+					currentState = currentState
+				)
 
-				val testData = TimetableType.Teacher
-				testData.value = "1"
+				viewModel.saveData(teacherId)
+
+				val data = TimetableType.Teacher
+				data.value = "1"
+
+				//TODO("Заменить дефолтное data.value = 1 на data.value = teacherId")
 
 				navController.navigateWithParams(
 					route = Screen.WeekTimetableScreen.route,
-					params = bundleOf("KEY" to testData)
+					params = bundleOf("KEY" to data)
 				)
 			},
 			content = ChoosingScreenModel(
