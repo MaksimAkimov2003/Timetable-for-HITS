@@ -30,5 +30,5 @@ dependencies {
 	implementation project(":core:screens")
 	implementation project(":mockapiserver")
 	implementation project(":network")
-	implementation project(':userStorage')
+	implementation project(':shared:userStorage')
 }

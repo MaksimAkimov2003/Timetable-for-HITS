@@ -5,9 +5,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.userstorage.domain.entity.TimetableType
-import com.example.userstorage.domain.entity.UserData
 import com.example.userstorage.domain.usecase.GetUserDataUseCase
-import com.example.userstorage.domain.usecase.SaveUserDataUseCase
 import com.example.weektimetable.domain.entity.WeekDateEntity
 import com.example.weektimetable.domain.entity.WeekEntity
 import com.example.weektimetable.domain.usecase.GetWeekTimetableByAuditoryUseCase
@@ -15,11 +13,9 @@ import com.example.weektimetable.domain.usecase.GetWeekTimetableByGroupUseCase
 import com.example.weektimetable.domain.usecase.GetWeekTimetableByTeacherUseCase
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import java.lang.Math.ceil
 import java.util.*
 
 class WeekTimetableViewModel(

@@ -28,6 +28,6 @@ dependencies {
 
 	implementation project(':shared:choosing_screens')
 	implementation project(':network')
-	implementation project(":userStorage")
+	implementation project(":shared:userStorage")
 	implementation project(":core:screens")
 }
