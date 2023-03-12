@@ -73,5 +73,6 @@ ext.Dependencies =
 		COMPOSE_TOOLING            : "androidx.compose.ui:ui-tooling:$Versions.COMPOSE_UI",
 		COMPOSE_TEST_MANIFEST      : "androidx.compose.ui:ui-test-manifest:$Versions.COMPOSE_UI",
 		COMPOSE_KOIN               : "io.insert-koin:koin-androidx-compose:${Versions.COMPOSE_KOIN}",
-		COMPOSE_LIVEDATA           : "androidx.compose.runtime:runtime-livedata:${Versions.COMPOSE_LIVEDATA}"
+		COMPOSE_LIVEDATA           : "androidx.compose.runtime:runtime-livedata:${Versions.COMPOSE_LIVEDATA}",
+		COMPOSE_NAVIGATION         : "androidx.navigation:navigation-compose:${Versions.COMPOSE_NAVIGATION}"
 	]

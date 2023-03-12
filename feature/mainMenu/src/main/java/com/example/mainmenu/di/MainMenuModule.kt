@@ -6,6 +6,6 @@ import org.koin.dsl.module
 
 val mainMenuModule = module {
 	viewModel {
-		MainMenuViewModel()
+		MainMenuViewModel(clearUserDataUseCase = get(), getUserDataUseCase = get())
 	}
 }

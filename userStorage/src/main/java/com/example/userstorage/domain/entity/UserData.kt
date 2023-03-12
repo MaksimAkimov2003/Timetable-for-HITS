@@ -1,5 +1,8 @@
 package com.example.userstorage.domain.entity
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
 data class UserData(val data: TimetableType)
 
 enum class TimetableTypeEntity(val key: Int) {
@@ -9,7 +12,9 @@ enum class TimetableTypeEntity(val key: Int) {
     Auditory(2),
 }
 
-enum class TimetableType(val prefix: String, var value: String = "") {
+@Parcelize
+enum class TimetableType(val prefix: String, var value: String = "") : Parcelable {
+
     Unauthorized(""),
     Group("Группа"),
     Teacher(""),

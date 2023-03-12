@@ -47,4 +47,5 @@ dependencies {
 	implementation project(":feature:start_screen")
 	implementation project(":feature:auditories_screen")
 	implementation project(':feature:mainMenu')
+	implementation project(":navigation")
 }

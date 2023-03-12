@@ -12,7 +12,10 @@ import org.koin.dsl.module
 
 val groupsScreenModule = module {
 	viewModel {
-		GroupsViewModel(getGroupsListUseCase = get())
+		GroupsViewModel(
+			getGroupsListUseCase = get(),
+			saveUserDataUseCase = get()
+		)
 	}
 	factory { GetGroupsListUseCase(repository = get()) }
 	single { GroupsRepository(dataSource = get()) }

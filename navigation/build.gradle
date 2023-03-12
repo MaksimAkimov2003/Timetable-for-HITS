@@ -5,7 +5,6 @@ apply from: "$rootDir/build-system/module-types/android-library.gradle"
 
 dependencies {
 	implementation Dependencies.CORE
-	implementation Dependencies.CICERONE
 	implementation Dependencies.KOIN_CORE
 	implementation Dependencies.KOIN_ANDROID
 	implementation Dependencies.VIEW_MODEL
@@ -21,8 +20,17 @@ dependencies {
 	implementation Dependencies.COMPOSE_TEST_MANIFEST
 	implementation Dependencies.COMPOSE_KOIN
 	implementation Dependencies.COMPOSE_LIVEDATA
+	implementation Dependencies.COMPOSE_NAVIGATION
 
-	implementation project(":core:resources")
+	implementation project(":feature:auditories_screen")
+	implementation project(":feature:directions_screen")
+	implementation project(":feature:faculties_screen")
+	implementation project(":feature:groups_screen")
+	implementation project(":feature:mainMenu")
+	implementation project(":feature:start_screen")
+	implementation project(":feature:teachers_screen")
+	implementation project(":weekTimetable")
+
+	implementation project(":userStorage")
 	implementation project(":core:screens")
-	implementation project(":shared:choosing_screens")
 }
