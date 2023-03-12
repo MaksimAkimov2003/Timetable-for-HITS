@@ -13,18 +13,11 @@ internal val Typography = Typography(
 		fontSize = 16.sp,
 		color = textPrimary
 	),
-	body2 = TextStyle(
-		fontFamily = FontFamily.Default,
-		fontWeight = FontWeight.Normal,
-		fontSize = 14.sp,
-		color = textPrimary
-	),
 	caption = TextStyle(
 		fontFamily = FontFamily.Default,
 		fontWeight = FontWeight.Normal,
 		fontSize = 16.sp,
-		color = textPrimary
-		fontSize = 16.sp
+		color = textPrimary,
 	),
 	subtitle1 = TextStyle(
 		fontWeight = FontWeight.SemiBold,

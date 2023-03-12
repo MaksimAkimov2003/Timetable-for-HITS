@@ -26,7 +26,7 @@ class App : Application() {
 			modules(
 				networkModule,
 				weekTimetableModule,
-				userStorageModule
+				userStorageModule,
 				teachersScreenModule,
 				facultiesScreenModule,
 				directionsScreenModule,

@@ -13,7 +13,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.example.mainmenu.ui.MainMenuScreen
 import com.example.resources.theme.TimetableTheme
-import com.example.weektimetable.ui.WeekTimetableActivity
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.Router
 
@@ -26,7 +25,6 @@ class MainActivity : ComponentActivity() {
 				MainMenuScreen()
 			}
 		}
-		startActivity(Intent(this@MainActivity, WeekTimetableActivity::class.java))
 	}
 }
 

@@ -9,6 +9,7 @@ import com.example.userstorage.domain.entity.UserData
 import com.example.userstorage.domain.usecase.GetUserDataUseCase
 import com.example.userstorage.domain.usecase.SaveUserDataUseCase
 import com.example.weektimetable.domain.entity.WeekDateEntity
+import com.example.weektimetable.domain.entity.WeekEntity
 import com.example.weektimetable.domain.usecase.GetWeekTimetableByAuditoryUseCase
 import com.example.weektimetable.domain.usecase.GetWeekTimetableByGroupUseCase
 import com.example.weektimetable.domain.usecase.GetWeekTimetableByTeacherUseCase
@@ -140,6 +141,7 @@ class WeekTimetableViewModel(
 						TimetableType.Group 	-> { getWeekTimetableByGroupUseCase(loadingState.timetableType.value, loadingState.currentWeek) }
 						TimetableType.Auditory 	-> { getWeekTimetableByAuditoryUseCase(loadingState.timetableType.value, loadingState.currentWeek) }
 						TimetableType.Teacher 	-> { getWeekTimetableByTeacherUseCase(loadingState.timetableType.value, loadingState.currentWeek) }
+						else					-> { WeekEntity(listOf()) }
 					}
 				)
 			}, catchError = {
