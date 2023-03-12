@@ -1,7 +1,9 @@
 package com.example.weektimetable.ui.scrolltable
 
+import android.graphics.Bitmap
 import android.graphics.Paint
 import android.graphics.Rect
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.unit.dp
@@ -9,179 +11,101 @@ import java.lang.Float.max
 
 class CanvasBlock {
 
+	private var content: MutableList<DrawScope.() -> Unit> = mutableListOf()
+	val textSpacing = 8.dp.value
+	val rectRound = 8.dp.value
+
 	var width: Float = 0f
 	var height: Float = 0f
 
-	private var nextBlock = 0f
+	fun DrawScope.display() { content.forEach { it() } }
 
-	private var gravity: Gravity = Gravity.LeftTop
-	fun gravity(gravity: Gravity) { this.gravity = gravity }
-
-	var content: MutableList<DrawScope.() -> Unit> = mutableListOf()
-
-	fun drawText(text: String, x: Float, y: Float, paint: Paint) {
-		val offset = Rect()
-		val bounds = Rect()
-		paint.getTextBounds("1", 0, "1".length, offset)
-		paint.getTextBounds(text, 0, text.length, bounds)
+	fun drawText(text: String, x: Float, y: Float, paint: Paint, toCenter: Boolean = false) {
 		content.add {
-			handleGravity(x + bounds.width(),y + offset.height()) {
-				drawContext.canvas.nativeCanvas.drawText(text, x, y + offset.height(), paint)
-			}
+			val offset = if(toCenter) Offset(width/2f - getTextHeight(text, paint)/2f, height/2f - getDefaultTextHeight(paint)/2) else Offset(0f, 0f)
+			drawContext.canvas.nativeCanvas.drawText(
+				text,
+				offset.x + x,
+				offset.y + y + getDefaultTextHeight(paint),
+				paint)
 		}
-		height = max(height, y + offset.height())
-		width = max(width, x + bounds.width())
+		width = max(width, x + getTextHeight(text, paint))
+		height = max(height, y + 2 * getDefaultTextHeight(paint))
 	}
 
-	fun drawTextByWidth(text: String, x: Float, y: Float, paint: Paint) {
-		val bounds = Rect()
-		val offset = Rect()
-		paint.getTextBounds("111", 0, "111".length, offset)
-		val lines = mutableListOf<String>()
-		var line = ""
-		for(i in text.indices) {
-			line += text[i]
-			paint.getTextBounds(line, 0, line.length, bounds)
-			if(bounds.width() + offset.width() > width) {
-				lines.add(line)
-				line = ""
-			}
-			else if(i < text.length - 1 && text.substring(i, i+1) == "\n") {
-				lines.add(line)
-				line = ""
-			}
-		}
-		if(line.isNotEmpty()) lines.add(line)
-		content.add {
-			handleGravity(x, y) {
-				lines.forEachIndexed { i, it ->
-					drawContext.canvas.nativeCanvas.drawText(it, x, y + i * 2 * offset.height() + offset.height(), paint)
-				}
-			}
-		}
-		height = max(height, y + lines.size * 2 * offset.height() + offset.height())
-	}
-
-	fun drawTextByWidthInRect(text: List<String>, x: Float, y: Float, textPaint: Paint, rectPaint: Paint, width: Float) {
-		this.width = width
-		val bounds = Rect()
-		val offset = Rect()
-		textPaint.getTextBounds("1111", 0, "1111".length, offset)
-		val lines = mutableListOf<MutableList<String>>()
-		var line = ""
-		for(i in text) {
-			val newBlock = mutableListOf<String>()
-			for (j in i.indices) {
-				line += i[j]
-				textPaint.getTextBounds(line, 0, line.length, bounds)
-				if (bounds.width() + offset.width() > width) {
-					if (line == "\n") continue
-					newBlock.add(line)
-					line = ""
-				} else if (j < i.length - 1 && i.substring(j, j + 1) == "\n") {
-					if (line == "\n") continue
-					newBlock.add(line)
-					line = ""
-				}
-			}
-			if (newBlock.isNotEmpty() && line != "\n") {
-				newBlock.add(line)
-				lines.add(newBlock)
-			}
-		}
-		var newHeight = y + lines.size * 16.dp.value
+	private data class Lines(val text: String, val x: Float, val y: Float)
+	fun drawText(text: String, x: Float, y: Float, paint: Paint, textWidth: Float) {
+		val lines = getLines(text, paint, textWidth)
 		lines.forEach {
-			newHeight += it.size * 2 * offset.height() + offset.height()
-		}
-		content.add {
-			handleGravity(x, y) {
-				var start = 0f
-				lines.forEachIndexed {j, it ->
-					start += if(j!=0) j * 8.dp.value + lines[j-1].size * 2f * offset.height() + offset.height() else 0f
-					drawContext.canvas.nativeCanvas.drawRoundRect(
-						0f,
-						start,
-						width,
-						start + j * 8.dp.value + y + it.size * 2 * offset.height() + offset.height(),
-						8.dp.value,
-						8.dp.value ,
-						rectPaint
-					)
-					it.forEachIndexed { i, block ->
-						drawContext.canvas.nativeCanvas.drawText(
-							block,
-							x + offset.width() / 4,
-							start + offset.height() + y + i * 2 * offset.height() + offset.height(),
-							textPaint
-						)
-					}
-				}
+			content.add {
+				drawContext.canvas.nativeCanvas.drawText(
+					it.text,
+					it.x + x,
+					it.y + y + getDefaultTextHeight(paint),
+					paint
+				)
 			}
 		}
-		height = max(height, newHeight)
+		width = max(width, x + textWidth)
+		height = max(height,  y + getDefaultTextHeight(paint) * lines.size + textSpacing * (lines.size - 2))
 	}
 
-	fun drawRect(left: Float, top: Float, right: Float, bottom: Float, paint: Paint) {
+	fun drawIcon(left: Float, top: Float, right: Float, bottom: Float, bitmap: Bitmap, paint: Paint) {
 		content.add {
-			handleGravity(right, bottom) {
-				drawContext.canvas.nativeCanvas.drawRect(left, top, right, bottom, paint)
-			}
+			drawContext.canvas.nativeCanvas.drawBitmap(bitmap, left, top, paint)
 		}
 		width = max(width, right)
 		height = max(height, bottom)
 	}
 
-	fun drawRectByHeight(top: Float, bottom: Float, paint: Paint) {
-		content.add {
-			handleGravity(bottom, height) {
-				drawContext.canvas.nativeCanvas.drawRoundRect(top, 0f, bottom, height, 8.dp.value, 8.dp.value , paint)
+	fun drawRoundRectUnderContent(left: Float, top: Float, right: Float, bottom: Float, paint: Paint) {
+		content.add(0) {
+			drawContext.canvas.nativeCanvas.drawRoundRect(
+				left, top, right, bottom,
+				rectRound, rectRound,
+				paint
+			)
+		}
+		width = max(width, right)
+		height = max(height, bottom)
+	}
+
+	fun getDefaultTextHeight(paint: Paint): Float {
+		val bounds = Rect()
+		paint.getTextBounds("1", 0, "1".length, bounds)
+		return bounds.height().toFloat() * 1.5f
+	}
+
+	fun getTextHeight(text: String, paint: Paint): Float {
+		return paint.measureText(text)
+	}
+
+	fun getTextHeight(text: String, paint: Paint, maxWidth: Float): Float {
+		val lines = getLines(text, paint, maxWidth)
+		return if(lines.isEmpty()) 0f else lines.last().y + getDefaultTextHeight(paint)
+	}
+
+	private fun getLines(text: String, paint: Paint, maxWidth: Float): List<Lines> {
+		val lines = mutableListOf<Lines>()
+		val textTokens = text.split(" ")
+		var line = ""
+		textTokens.forEach {
+			if(paint.measureText(line, 0, line.length) + paint.measureText(it, 0, it.length) >= maxWidth) {
+				lines.add(Lines(line, 0f, if(lines.isEmpty()) 0f else lines.last().y + getDefaultTextHeight(paint)))
+				line = it
+			}
+			else {
+				if(line.isEmpty()) {
+					line += it
+				}
+				else {
+					line += " $it"
+				}
 			}
 		}
-		width = max(width, bottom)
-	}
-
-	fun drawRectByWidth(left: Float, right: Float, paint: Paint) {
-		content.add {
-			handleGravity(width, right) {
-				drawContext.canvas.nativeCanvas.drawRect(0f, left, width, right, paint)
-			}
+		if(line.isNotEmpty()) {
+			lines.add(Lines(line, 0f, if(lines.isEmpty()) 0f else lines.last().y + getDefaultTextHeight(paint)))
 		}
-		height = max(height, right)
-	}
-
-	private fun DrawScope.handleGravity(width: Float, height: Float, content: DrawScope.() -> Unit) {
-		if (gravity == Gravity.Center) {
-			translate(this@CanvasBlock.width / 2 - width / 2, this@CanvasBlock.height / 2 - height / 2) {
-				content()
-			}
-		}
-		else {
-			content()
-		}
-	}
-
-	enum class Size {
-		MAX_WIDTH,
-		MAX_HEIGHT,
-	}
-
-	enum class Gravity {
-		Center,
-//		Left,
-//		Top,
-//		Right,
-//		Bottom,
-		LeftTop,
-//		TopRight,
-//		RightBottom,
-//		BottomLeft
+		return lines
 	}
 }
-
-fun DrawScope.translate(x: Float, y: Float, content: DrawScope.() -> Unit) {
-	drawContext.transform.translate(x, y)
-	content()
-	drawContext.transform.translate(-x, -y)
-}
-
-

@@ -22,6 +22,7 @@ import java.lang.Math.ceil
 import java.util.*
 
 class WeekTimetableViewModel(
+	private val saveUserDataUseCase: SaveUserDataUseCase,
 	private val getUserDataUseCase: GetUserDataUseCase,
 	private val getWeekTimetableByGroupUseCase: GetWeekTimetableByGroupUseCase,
 	private val getWeekTimetableByAuditoryUseCase: GetWeekTimetableByAuditoryUseCase,
@@ -102,6 +103,9 @@ class WeekTimetableViewModel(
 	}
 
 	fun loadTimetable() {
+		val data = UserData(data = TimetableType.Group)
+		data.data.value = "1"
+		saveUserDataUseCase(data)
 		val loadingState = createLoadingState(
 			week = getCurrentWeek(),
 			timetableType = getTimetableType(),

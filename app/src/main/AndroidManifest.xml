@@ -24,7 +24,6 @@
 			</intent-filter>
 		</activity>
 
-		<activity android:name="com.example.weektimetable.ui.WeekTimetableActivity"/>
 	</application>
 
 </manifest>

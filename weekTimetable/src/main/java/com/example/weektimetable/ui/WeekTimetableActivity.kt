@@ -112,7 +112,7 @@ class WeekTimetableActivity: ComponentActivity() {
 				.weight(1f)
 				.clip(MaterialTheme.shapes.large),
 				contentAlignment = Alignment.Center) {
-				ScrollTable(TimetableAdapter(state.timetable.days))
+				ScrollTable(TimetableAdapter(state.timetable.days, applicationContext))
 			}
 //			DrawBottomBar()
 		}

@@ -27,7 +27,7 @@ class ScrollTableState {
 		var offsetY: Float = 16.dp.value,
 		var viewSizeX: Float = 0.dp.value,
 		var viewSizeY: Float = 0.dp.value,
-		var strokeWidth: Float = 4.dp.value
+		var strokeWidth: Float = 2.dp.value
 	)
 	var measurements by mutableStateOf(Measurements())
 
