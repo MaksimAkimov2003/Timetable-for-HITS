@@ -79,10 +79,6 @@ class WeekTimetableViewModel(
 		return kotlin.math.ceil((now.timeInMillis - firstSeptember.timeInMillis) / weekMillis).toInt()
 	}
 
-	private fun getTimetableType(): TimetableType {
-		return getUserDataUseCase().data
-	}
-
 	private fun getCurrentDateByWeek(week: WeekDateEntity): String {
 		return DateFormat.format("MMMM yyyy · ${getWeekNumberFromFirstSeptember(week)} неделя", week.startDate).toString()
 	}
@@ -102,28 +98,28 @@ class WeekTimetableViewModel(
 		)
 	}
 
-	fun loadTimetable() {
+	fun loadTimetable(timetableType: TimetableType) {
 		val loadingState = createLoadingState(
 			week = getCurrentWeek(),
-			timetableType = getTimetableType(),
+			timetableType = timetableType,
 		)
 		_state.value = loadingState
 		makeTimetableRequest(loadingState)
 	}
 
-	fun loadLastWeek() {
+	fun loadLastWeek(timetableType: TimetableType) {
 		val loadingState = createLoadingState(
 			week = getLastWeek(getCurrentWeekFromState()),
-			timetableType = getTimetableType()
+			timetableType = timetableType
 		)
 		_state.value = loadingState
 		makeTimetableRequest(loadingState)
 	}
 
-	fun loadNextWeek() {
+	fun loadNextWeek(timetableType: TimetableType) {
 		val loadingState = createLoadingState(
 			week = getNextWeek(getCurrentWeekFromState()),
-			timetableType = getTimetableType(),
+			timetableType = timetableType,
 		)
 		_state.value = loadingState
 		makeTimetableRequest(loadingState)
