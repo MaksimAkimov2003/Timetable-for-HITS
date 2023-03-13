@@ -2,6 +2,7 @@ package com.example.weektimetable.presentation
 
 import android.text.format.DateFormat
 import android.util.Log
+import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.userstorage.domain.entity.TimetableType
@@ -13,6 +14,7 @@ import com.example.weektimetable.domain.usecase.GetWeekTimetableByGroupUseCase
 import com.example.weektimetable.domain.usecase.GetWeekTimetableByTeacherUseCase
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -45,6 +47,21 @@ class WeekTimetableViewModel(
 				(now.get(Calendar.DAY_OF_WEEK) - now.firstDayOfWeek)  * day
 		val endWeek = startWeek + week - day
 		return WeekDateEntity(startWeek, endWeek)
+	}
+
+	fun getCurrentDay(): Long {
+		val milliseconds = 1
+		val second = 1000 * milliseconds
+		val minute = 60 * second
+		val hour = 60 * minute
+		val day = 24 * hour
+		val week = 7 * day
+		val now = Calendar.getInstance()
+		return now.timeInMillis -
+				now.get(Calendar.MILLISECOND) * milliseconds -
+				now.get(Calendar.SECOND) * second -
+				now.get(Calendar.MINUTE) * minute -
+				now.get(Calendar.HOUR_OF_DAY) * hour
 	}
 
 	private fun getLastWeek(currentWeek: WeekDateEntity): WeekDateEntity {
@@ -86,45 +103,113 @@ class WeekTimetableViewModel(
 		else							-> { throw java.lang.IllegalArgumentException("ViewModel state should be init") }
 	}
 
-	private fun createLoadingState(week: WeekDateEntity, timetableType: TimetableType): WeekTimetableState.Loading {
+	private fun createLoadingState(week: WeekDateEntity, timetableType: TimetableType, currentDay: Long, isListTimetableType: Boolean): WeekTimetableState.Loading {
 		return WeekTimetableState.Loading(
 			timetableType = timetableType,
 			currentDate = getCurrentDateByWeek(week),
 			currentWeek = week,
+			currentDay = currentDay,
+			isListTimetable = isListTimetableType
 		)
 	}
 
-	fun loadTimetable(timetableType: TimetableType) {
+	fun setToday() {
+		when (_state.value) {
+			is WeekTimetableState.Initial -> {
+				throw java.lang.IllegalStateException("ViewModel state should be init")
+			}
+			is WeekTimetableState.Loading -> {
+				val currentState = _state.value as WeekTimetableState.Loading
+				loadTimetable(currentState.timetableType, currentState.isListTimetable, getCurrentDay())
+			}
+			is WeekTimetableState.Error   -> {
+				val currentState = _state.value as WeekTimetableState.Error
+				loadTimetable(currentState.timetableType, currentState.isListTimetable, getCurrentDay())
+
+			}
+			is WeekTimetableState.Content -> {
+				val currentState = _state.value as WeekTimetableState.Content
+				loadTimetable(currentState.timetableType, currentState.isListTimetable, getCurrentDay())
+			}
+		}
+
+	}
+
+	fun loadTimetable(timetableType: TimetableType, isListTimetableType: Boolean, currentDay: Long) {
 		val loadingState = createLoadingState(
 			week = getCurrentWeek(),
-			timetableType = timetableType
+			timetableType = timetableType,
+			currentDay = currentDay,
+			isListTimetableType = isListTimetableType
 		)
 		_state.value = loadingState
 		makeTimetableRequest(loadingState)
 	}
 
-	fun loadLastWeek(timetableType: TimetableType) {
+	fun loadLastWeek(timetableType: TimetableType, isListTimetableType: Boolean) {
 		val loadingState = createLoadingState(
 			week = getLastWeek(getCurrentWeekFromState()),
-			timetableType = timetableType
+			timetableType = timetableType,
+			currentDay = getLastWeek(getCurrentWeekFromState()).startDate,
+			isListTimetableType = isListTimetableType
 		)
 		_state.value = loadingState
 		makeTimetableRequest(loadingState)
 	}
 
-	fun loadNextWeek(timetableType: TimetableType) {
+	fun loadNextWeek(timetableType: TimetableType, isListTimetableType: Boolean) {
 		val loadingState = createLoadingState(
 			week = getNextWeek(getCurrentWeekFromState()),
-			timetableType = timetableType
+			timetableType = timetableType,
+			currentDay = getNextWeek(getCurrentWeekFromState()).startDate,
+			isListTimetableType = isListTimetableType
 		)
 		_state.value = loadingState
 		makeTimetableRequest(loadingState)
+	}
+
+	fun setCurrentDay(currentDay: Long) {
+		when (_state.value) {
+			is WeekTimetableState.Initial -> {
+				throw java.lang.IllegalStateException("ViewModel state should be init")
+			}
+			is WeekTimetableState.Loading -> {
+				_state.value = (_state.value as WeekTimetableState.Loading).copy(currentDay = currentDay)
+			}
+			is WeekTimetableState.Error   -> {
+				_state.value = (_state.value as WeekTimetableState.Error).copy(currentDay = currentDay)
+
+			}
+			is WeekTimetableState.Content -> {
+				_state.value = (_state.value as WeekTimetableState.Content).copy(currentDay = currentDay)
+			}
+		}
+	}
+
+	fun changeTimetable() {
+		when (_state.value) {
+			is WeekTimetableState.Initial -> {
+				throw java.lang.IllegalStateException("ViewModel state should be init")
+			}
+			is WeekTimetableState.Loading -> {
+				_state.value = (_state.value as WeekTimetableState.Loading).copy(isListTimetable = !(_state.value as WeekTimetableState.Loading).isListTimetable)
+			}
+			is WeekTimetableState.Error   -> {
+				_state.value = (_state.value as WeekTimetableState.Error).copy(isListTimetable = !(_state.value as WeekTimetableState.Error).isListTimetable)
+
+			}
+			is WeekTimetableState.Content -> {
+				_state.value = (_state.value as WeekTimetableState.Content).copy(isListTimetable = !(_state.value as WeekTimetableState.Content).isListTimetable)
+
+			}
+		}
 	}
 
 	private fun makeTimetableRequest(loadingState: WeekTimetableState.Loading) {
 		requestStack.clearJobs()
 		requestStack.add(launch(
 			run = {
+				delay(300)
 				_state.value = WeekTimetableState.Content(
 					timetableType = loadingState.timetableType,
 					currentDate = loadingState.currentDate,
@@ -134,14 +219,18 @@ class WeekTimetableViewModel(
 						TimetableType.Auditory 	-> { getWeekTimetableByAuditoryUseCase(loadingState.timetableType.value, loadingState.currentWeek) }
 						TimetableType.Teacher 	-> { getWeekTimetableByTeacherUseCase(loadingState.timetableType.value, loadingState.currentWeek) }
 						else					-> { WeekEntity(listOf()) }
-					}
+					},
+					currentDay = loadingState.currentDay,
+					isListTimetable = loadingState.isListTimetable
 				)
 			}, catchError = {
 				Log.e("error", it.message?: "")
 				_state.value = WeekTimetableState.Error(
 					timetableType = loadingState.timetableType,
 					currentDate = loadingState.currentDate,
-					currentWeek = loadingState.currentWeek
+					currentWeek = loadingState.currentWeek,
+					currentDay = loadingState.currentDay,
+					isListTimetable = loadingState.isListTimetable
 				)
 			}))
 	}

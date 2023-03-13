@@ -3,7 +3,7 @@ package com.example.resources.theme
 import androidx.compose.ui.graphics.Color
 
 internal val textPrimary		= Color(0xFF2B3056)
-internal val textHint			= Color(0xFF84879D)
+val textHint			= Color(0xFF84879D)
 
 val white				= Color(0xFFFFFFFF)
 val primary 			= Color(0xFF7F8AE8)
@@ -21,3 +21,5 @@ val onError				= Color(0xFFFFFFFF)
 
 val choosingScreens = Color(0xFFBFC6FC)
 val mainMenuBorder				= Color(0xffadb3e0)
+
+val transparent = Color(0x00000000)

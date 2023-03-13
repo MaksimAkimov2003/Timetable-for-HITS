@@ -5,10 +5,13 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Paint
@@ -16,6 +19,7 @@ import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.unit.dp
 
 abstract class ScrollTableAdapter {
 
@@ -84,6 +88,8 @@ private fun DrawTable(
     }
 	Canvas(modifier = Modifier
 		.fillMaxSize()
+		.padding(8.dp)
+		.clip(RoundedCornerShape(8.dp))
 		.background(MaterialTheme.colors.background)
 		.scrollable(state.horizontalScrollState, Orientation.Horizontal)
 		.scrollable(state.verticalScrollState, Orientation.Vertical)

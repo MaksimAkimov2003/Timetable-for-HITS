@@ -16,8 +16,8 @@ internal val Typography = Typography(
 	caption = TextStyle(
 		fontFamily = FontFamily.Default,
 		fontWeight = FontWeight.Normal,
-		fontSize = 16.sp,
-		color = textPrimary,
+		fontSize = 14.sp,
+		color = textHint,
 	),
 	subtitle1 = TextStyle(
 		fontWeight = FontWeight.SemiBold,
@@ -42,6 +42,12 @@ internal val Typography = Typography(
 		fontWeight = FontWeight.Normal,
 		fontSize = 24.sp,
 		color = onSecondary
+	),
+	h6 = TextStyle(
+		fontFamily = FontFamily.Default,
+		fontWeight = FontWeight.Normal,
+		fontSize = 16.sp,
+		color = primary
 	)
 
 )
