@@ -1,3 +1,4 @@
+
 # Timetable-for-HITS
 Schedule view android-application📱.The project was made as part of the team development course at HITS🎓
 ## Tech-stack
@@ -12,9 +13,16 @@ Schedule view android-application📱.The project was made as part of the team d
 - Clean architecture in each module(data, domain, presentation)
 - UI pattern MVVM
 ## Project screenshots
-![image](https://user-images.githubusercontent.com/101564073/227115380-e11237e8-af8d-4716-9135-bc6c3dbde5be.png)
-![image](https://user-images.githubusercontent.com/101564073/227115523-e8e9b1ef-3e43-4535-8d1b-a269cc20ac59.png)
-![image](https://user-images.githubusercontent.com/101564073/227115592-31c86e71-7958-48e4-aa66-5c22fe0d67d5.png)
-![image](https://user-images.githubusercontent.com/101564073/227115621-9957d5b9-5c41-4c89-928e-ea42df1ed9aa.png)
-![image](https://user-images.githubusercontent.com/101564073/227115638-8000a969-e9ed-447e-ae58-a87a0fdf3491.png)
-![image](https://user-images.githubusercontent.com/101564073/227115655-6c4609ad-c938-4d24-9c13-5a15927f12e4.png)
+![image](https://user-images.githubusercontent.com/101564073/227120760-247e3bcc-4cca-4bb4-8e33-54e4f2f9a171.png)
+![image](https://user-images.githubusercontent.com/101564073/227120937-b36360d6-3767-4663-a73b-6af841c2815d.png)
+
+![image](https://user-images.githubusercontent.com/101564073/227120071-63915749-2a2c-426e-9eac-3c4d5dac6409.png)
+![image](https://user-images.githubusercontent.com/101564073/227121242-95b43d3b-5562-45f1-85a3-309605dd10a6.png)
+
+![image](https://user-images.githubusercontent.com/101564073/227121407-3e8bfe61-b9b8-4c87-adf6-518bffcb8e9e.png)
+![image](https://user-images.githubusercontent.com/101564073/227121443-95e2e2d8-4463-4a97-b026-46b8b1491d5c.png)
+
+
+
+
+
